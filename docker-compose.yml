@@ -1,0 +1,29 @@
+# =============================================================
+#  ThunderMax - Base de datos PostgreSQL en Docker
+#  Levantar:   docker compose up -d
+#  Detener:    docker compose down
+#  Borrar todo (incluye datos): docker compose down -v
+# =============================================================
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: thundermax-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: thundermax_db
+      POSTGRES_USER: thundermax
+      POSTGRES_PASSWORD: thundermax123
+      TZ: America/Guatemala
+    ports:
+      # host:contenedor -> se usa 5433 en tu PC para no chocar con otro PostgreSQL en 5432
+      - "5433:5432"
+    volumes:
+      - thundermax_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U thundermax -d thundermax_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  thundermax_data:
