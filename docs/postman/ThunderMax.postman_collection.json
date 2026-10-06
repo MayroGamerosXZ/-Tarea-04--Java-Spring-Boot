@@ -1,0 +1,111 @@
+{
+	"info": {
+		"_postman_id": "45d7a6b8-1e2f-4a3b-9c4d-5e6f7a8b9c0d",
+		"name": "ThunderMax - Ferretería",
+		"description": "Colección de pruebas para la API de ThunderMax",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Categorías",
+			"item": [
+				{
+					"name": "Listar todas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/api/categorias", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "categorias"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "3. Productos",
+			"item": [
+				{
+					"name": "Listar productos activos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/api/productos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "productos"] }
+					}
+				},
+				{
+					"name": "Productos con Stock Bajo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/api/productos/stock-bajo", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "productos", "stock-bajo"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "5. Inventario",
+			"item": [
+				{
+					"name": "Ver Kárdex de un Producto (Martillo)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/api/productos/1/kardex", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "productos", "1", "kardex"] }
+					}
+				},
+				{
+					"name": "Registrar Entrada (Compra)",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"productoId\": 1,\n  \"proveedorId\": 1,\n  \"cantidad\": 50,\n  \"costoUnitario\": 45.00,\n  \"numeroFactura\": \"A-1020\",\n  \"observaciones\": \"Reabastecimiento urgente\"\n}"
+						},
+						"url": { "raw": "http://localhost:8080/api/entradas", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "entradas"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "6. Ventas",
+			"item": [
+				{
+					"name": "Realizar Venta",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"clienteId\": 1,\n  \"metodoPago\": \"EFECTIVO\",\n  \"detalles\": [\n    { \"productoId\": 1, \"cantidad\": 2 },\n    { \"productoId\": 11, \"cantidad\": 10 }\n  ]\n}"
+						},
+						"url": { "raw": "http://localhost:8080/api/ventas", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "ventas"] }
+					}
+				}
+			]
+		},
+		{
+			"name": "8. Funciones Extra",
+			"item": [
+				{
+					"name": "Calculadora de Pintura",
+					"request": {
+						"method": "POST",
+						"header": [ { "key": "Content-Type", "value": "application/json" } ],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"largo\": 10,\n  \"ancho\": 5\n}"
+						},
+						"url": { "raw": "http://localhost:8080/api/calculadora/pintura", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "calculadora", "pintura"] }
+					}
+				},
+				{
+					"name": "Top Productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": { "raw": "http://localhost:8080/api/reportes/top-productos", "protocol": "http", "host": ["localhost"], "port": "8080", "path": ["api", "reportes", "top-productos"] }
+					}
+				}
+			]
+		}
+	]
+}
