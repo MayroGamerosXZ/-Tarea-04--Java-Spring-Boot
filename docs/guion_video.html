@@ -1,0 +1,94 @@
+# 🎬 Guion para el Video: Presentación de ThunderMax
+
+*(Este es el texto sugerido que puedes leer mientras muestras tu pantalla grabando el video. Hemos incluido los comandos y los momentos exactos donde debes dar clic).*
+
+---
+
+### [ESCENA 1: INICIO Y ARRANQUE DEL SISTEMA]
+
+**(Pantalla: Mostrando IntelliJ IDEA o la terminal abierta en la carpeta del proyecto)**
+
+**Tú (Hablando a la cámara/micrófono):**
+"Hola, mi nombre es Mayro Gameros. Como parte del curso de Análisis de Sistemas, les presento mi proyecto 'ThunderMax', una API REST diseñada para gestionar una ferretería guatemalteca. El sistema fue construido utilizando arquitectura MVC con **Java y Spring Boot 3**."
+
+"Lo primero que haré será levantar mi base de datos PostgreSQL utilizando Docker. En mi terminal ejecuto el comando:"
+
+*(Acción: Escribes y ejecutas en la consola `docker compose up -d`)*
+
+"Con la base de datos levantada en el puerto 5433 para evitar conflictos, ahora ejecuto el backend de Spring Boot mediante el botón de Play en IntelliJ IDEA, o bien usando el comando de Maven."
+
+*(Acción: Haces clic en ▶️ Run 'ThunderMaxApplication' o escribes `./mvnw spring-boot:run` en la terminal de IntelliJ).*
+
+"Al arrancar, podemos ver en la consola cómo Spring Boot inicializa las tablas, y un componente que programé llamado `DataSeeder` inyecta automáticamente 21 productos de ferretería, clientes y proveedores para tener datos de prueba."
+
+---
+
+### [ESCENA 2: PRUEBAS EN SWAGGER (INVENTARIO Y KÁRDEX)]
+
+**(Pantalla: Cambias la vista a Google Chrome, entrando a `http://localhost:8080/swagger-ui.html`)**
+
+**Tú:**
+"Para probar la funcionalidad, utilicé Swagger, el cual auto-documenta mis controladores de Java. Aquí podemos ver los 8 módulos del sistema.
+
+Vamos a hacer una prueba crítica: **El manejo de inventario**. En este sistema, el stock no se puede alterar a mano. Se hace a través del Kárdex. Voy al endpoint de 'Entradas', y haré una petición POST para comprar 50 unidades del producto 1 (que es un martillo)."
+
+*(Acción: Abres POST /api/entradas. Presionas 'Try it out'. Pones `{"productoId": 1, "proveedorId": 1, "cantidad": 50, "costoUnitario": 45}` y le das a 'Execute').*
+
+**Tú:**
+"El sistema me devuelve un código 201 Created. Ahora, si voy a revisar el Kárdex de ese producto..."
+
+*(Acción: Vas a GET /api/productos/1/kardex. Le das a Execute).*
+
+**Tú:**
+"...podemos ver que el Kárdex registró perfectamente que el stock anterior era 0, y el nuevo stock es 50, auditando la compra."
+
+---
+
+### [ESCENA 3: PRUEBAS DE FACTURACIÓN Y TRANSACCIONES]
+
+**(Pantalla: Sigues en Swagger, en la sección de Ventas)**
+
+**Tú:**
+"Ahora hagamos una venta. Uno de los puntos clave del sistema es el uso de transacciones con la anotación `@Transactional`. Si intento vender, el sistema descuenta el stock automáticamente y calcula el IVA."
+
+*(Acción: Abres POST /api/ventas. Presionas 'Try it out' y usas el JSON predeterminado o uno simple para comprar 5 unidades. Le das a Execute).*
+
+**Tú:**
+"Aquí vemos la factura generada (Código 201). El subtotal y el IVA se calcularon. Si yo intentara vender 9,000 unidades de un producto, la anotación `@Transactional` en mi servicio se encarga de abortar la operación para no corromper la base de datos, lanzando un error 400 avisando que el stock es insuficiente."
+
+---
+
+### [ESCENA 4: FUNCIONES EXTRA Y REPORTES]
+
+**(Pantalla: Vas a la sección de Calculadora y Reportes en Swagger)**
+
+**Tú:**
+"Como valor agregado, le implementé a la ferretería una calculadora. Le mando el largo y ancho de una pared..."
+
+*(Acción: Ejecutas POST /api/calculadora/pintura mandando 10 de largo y 5 de ancho)*
+
+**Tú:**
+"...y el sistema me responde en JSON que necesito comprar 2 galones de pintura, y me sugiere automáticamente las pinturas que la base de datos tiene actualmente en stock."
+
+---
+
+### [ESCENA 5: REFLEXIÓN DE APRENDIZAJE Y EL ERROR DE LAZY LOADING]
+
+**(Pantalla: Vuelves a la cámara o muestras una diapositiva o la estructura de paquetes en IntelliJ)**
+
+**Tú:**
+"Para finalizar, quiero responder a las preguntas solicitadas en el informe:
+
+**1. ¿Qué aprendí o reforcé?**
+Reforcé mucho mis bases sobre Arquitectura de N-Capas. Al venir de Node.js, donde los controladores y rutas se mezclan muy fácilmente, aprender a usar las anotaciones de Spring Boot (`@Service`, `@RestController`) me obligó a separar la lógica de negocio del enrutamiento web.
+
+**2. ¿Qué fue lo más interesante?**
+Lo más interesante fue el manejo del ORM Hibernate para la base de datos, y cómo una simple anotación (`@Transactional`) puede salvar tu sistema de quedar con datos corruptos si una compra falla a la mitad.
+
+**3. ¿Qué no sabía cómo funcionaba y ahora tengo claro?**
+Esto fue súper curioso. Al probar la API para traer la lista de productos, el sistema me arrojó un **error interno 500**. Descubrí que la causa fue una excepción llamada `LazyInitializationException`. En Java, para ahorrar memoria, las relaciones entre tablas (como la categoría de un producto) no se cargan automáticamente (Carga Perezosa o Lazy Loading). Al intentar pintar el JSON, la conexión a la base de datos ya se había cerrado. 
+La solución fue comprender el concepto de `open-in-view` en Spring Boot, lo cual aprendí a configurar en el archivo `application.properties` para mantener la sesión de lectura abierta. Es un nivel de control de base de datos que en entornos más simples de JavaScript uno no suele notar."
+
+"Este ha sido mi proyecto ThunderMax, muchas gracias por su atención."
+
+*(Fin del video).*
