@@ -5,88 +5,182 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Documentación Técnica Completa - ThunderMax</title>
     <style>
-        :root { --primary: #0369a1; --secondary: #0ea5e9; --text: #334155; --bg: #f8fafc; --surface: #ffffff; }
-        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.7; color: var(--text); background: var(--bg); margin: 0; padding: 2rem; }
-        .container { max-width: 1000px; margin: 0 auto; background: var(--surface); padding: 3rem; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); }
-        h1 { color: var(--primary); font-size: 2.8rem; border-bottom: 3px solid var(--secondary); padding-bottom: 1rem; }
-        h2 { color: var(--primary); font-size: 2rem; margin-top: 3rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 0.5rem; }
-        h3 { color: var(--secondary); font-size: 1.5rem; margin-top: 2rem; }
-        p, li { font-size: 1.1rem; }
-        .toc { background: #f1f5f9; padding: 2rem; border-radius: 8px; margin: 2rem 0; }
+        :root { --primary: #0284c7; --secondary: #0ea5e9; --text: #334155; --bg: #f8fafc; --surface: #ffffff; }
+        body { font-family: 'Segoe UI', system-ui, sans-serif; line-height: 1.8; color: var(--text); background: var(--bg); margin: 0; padding: 2rem; }
+        .container { max-width: 1000px; margin: 0 auto; background: var(--surface); padding: 4rem; border-radius: 12px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); }
+        h1 { color: var(--primary); font-size: 3rem; border-bottom: 4px solid var(--secondary); padding-bottom: 1rem; margin-bottom: 2rem; }
+        h2 { color: var(--primary); font-size: 2.2rem; margin-top: 4rem; border-bottom: 2px solid #e2e8f0; padding-bottom: 0.5rem; }
+        h3 { color: var(--secondary); font-size: 1.6rem; margin-top: 2.5rem; }
+        h4 { color: #475569; font-size: 1.2rem; }
+        p, li { font-size: 1.15rem; color: #475569; }
+        
+        .toc { background: #f1f5f9; padding: 2rem 3rem; border-radius: 12px; margin: 3rem 0; border-left: 6px solid var(--primary); }
+        .toc h3 { margin-top: 0; color: var(--primary); }
         .toc ul { list-style: none; padding: 0; }
-        .toc li { margin-bottom: 0.8rem; font-weight: 500; }
+        .toc li { margin-bottom: 1rem; font-weight: 500; font-size: 1.1rem; }
         .toc a { color: var(--primary); text-decoration: none; }
-        .toc a:hover { text-decoration: underline; }
-        .highlight { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 1.5rem; margin: 1.5rem 0; border-radius: 0 8px 8px 0; }
-        table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
-        th, td { border: 1px solid #cbd5e1; padding: 1rem; text-align: left; }
-        th { background: #f1f5f9; color: var(--primary); }
-        code { background: #e2e8f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-family: monospace; color: #be123c; }
-        .conclusion { background: #f0fdfa; border: 1px solid #5eead4; padding: 2rem; border-radius: 8px; margin-top: 3rem; }
+        .toc a:hover { text-decoration: underline; color: var(--secondary); }
+        
+        /* Estilos para el bloque de Imagen PENDIENTE */
+        .img-placeholder {
+            background-color: #f1f5f9;
+            border: 3px dashed #94a3b8;
+            border-radius: 12px;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin: 2.5rem 0;
+            color: #64748b;
+            font-weight: bold;
+            font-size: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .img-placeholder::before {
+            content: "📸";
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        table { width: 100%; border-collapse: collapse; margin: 2.5rem 0; font-size: 1.1rem; }
+        th, td { border: 1px solid #cbd5e1; padding: 1.2rem; text-align: left; }
+        th { background: #f8fafc; color: var(--primary); font-weight: bold; }
+        tr:nth-child(even) { background-color: #f8fafc; }
+        
+        code { background: #f1f5f9; padding: 0.2rem 0.5rem; border-radius: 6px; font-family: monospace; color: #be123c; font-weight: 600; }
+        
+        .conclusion { background: #f0fdfa; border: 1px solid #5eead4; padding: 3rem; border-radius: 12px; margin-top: 4rem; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .conclusion h3 { color: #0f766e; margin-top: 0; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>⚡ ThunderMax: Documentación Técnica y Arquitectura</h1>
-        <p><strong>Autor:</strong> Mayro Gameros | <strong>Asignatura:</strong> Análisis de Sistemas | <strong>Tecnología:</strong> Java Spring Boot 3</p>
+        <h1>⚡ ThunderMax: Documentación Técnica, Arquitectura y Aprendizajes</h1>
+        <p><strong>Autor:</strong> Mayro Gameros | <strong>Asignatura:</strong> Análisis de Sistemas | <strong>Framework:</strong> Java Spring Boot 3</p>
+
+        <div class="img-placeholder">
+            [AGREGAR AQUÍ: IMAGEN - Logotipo de ThunderMax o Portada de la presentación]
+        </div>
 
         <div class="toc">
             <h3>Índice de Contenidos</h3>
             <ul>
-                <li><a href="#resumen">1. Resumen Ejecutivo del Sistema</a></li>
-                <li><a href="#arquitectura">2. Arquitectura de Software (MVC y Spring Boot)</a></li>
-                <li><a href="#bd">3. Diseño de Base de Datos y Modelo de Dominio</a></li>
-                <li><a href="#modulos">4. Descripción de Módulos Core</a></li>
-                <li><a href="#patrones">5. Patrones de Diseño y Manejo de Errores</a></li>
-                <li><a href="#reflexion">6. Reflexión de Aprendizaje y Resolución de Problemas (¡Importante!)</a></li>
+                <li><a href="#intro">1. Introducción y Objetivos del Proyecto</a></li>
+                <li><a href="#arquitectura">2. Arquitectura de Software y N-Capas</a></li>
+                <li><a href="#tecnologias">3. Stack Tecnológico Utilizado</a></li>
+                <li><a href="#bd">4. Diseño de Base de Datos y Modelo de Dominio</a></li>
+                <li><a href="#modulos">5. Lógica de Negocio y Módulos Principales</a></li>
+                <li><a href="#reflexion">6. Reflexión de Aprendizaje y Resolución de Problemas (El error 500)</a></li>
             </ul>
         </div>
 
-        <h2 id="resumen">1. Resumen Ejecutivo del Sistema</h2>
-        <p>ThunderMax es una API RESTful diseñada específicamente para resolver las necesidades operativas de una ferretería guatemalteca. A diferencia de un sistema de inventario genérico, ThunderMax implementa un motor de <strong>Kárdex (bitácora de movimientos)</strong> estricto. El stock de los productos no se altera manualmente, asegurando que cada incremento (compras a proveedores) o decremento (ventas a clientes) quede auditado.</p>
+        <h2 id="intro">1. Introducción y Objetivos del Proyecto</h2>
+        <p>El proyecto <strong>ThunderMax</strong> nace como respuesta a la necesidad de modernizar la gestión operativa de una ferretería guatemalteca. El objetivo principal fue construir un sistema robusto en el backend que trascienda al típico CRUD básico y aplique reglas de negocio reales.</p>
+        <p>A diferencia de sistemas genéricos, ThunderMax garantiza la integridad de los datos implementando auditoría estricta de inventario a través de un "Kárdex" y forzando flujos transaccionales seguros (ACID) durante la facturación, además de brindar valor agregado como herramientas de cálculo de materiales constructivos.</p>
 
-        <h2 id="arquitectura">2. Arquitectura de Software</h2>
-        <p>El sistema abandona el enfoque de <i>scripts</i> sueltos y adopta una arquitectura de N-Capas utilizando el framework Spring Boot de Java. La transición de tecnologías como Node.js hacia Java Enterprise obliga a una separación de responsabilidades más formal:</p>
+        <h2 id="arquitectura">2. Arquitectura de Software y N-Capas</h2>
+        <p>Para asegurar que el sistema sea escalable y fácil de mantener, se aplicó una arquitectura de N-Capas fuertemente tipada utilizando el patrón <strong>MVC (Model-View-Controller) enfocado a API REST</strong>:</p>
+
+        <div class="img-placeholder">
+            [AGREGAR AQUÍ: IMAGEN - Diagrama de la Arquitectura N-Capas (Controladores -> Servicios -> Repositorios -> BD)]
+        </div>
+
         <ul>
-            <li><strong>Capa de Presentación (Controllers):</strong> Anotados con <code>@RestController</code>. Se encargan exclusivamente de recibir peticiones HTTP, delegar validaciones iniciales (con <code>@Valid</code>) y retornar respuestas HTTP (200, 201, 204).</li>
-            <li><strong>Capa de Servicio (Business Logic):</strong> Anotados con <code>@Service</code>. Aquí reside el "cerebro" de la ferretería. Validaciones complejas (ej. revisar si hay suficiente pintura para vender) ocurren aquí.</li>
-            <li><strong>Capa de Acceso a Datos (Repositories):</strong> Interfaces que heredan de <code>JpaRepository</code>. Permiten consultar PostgreSQL sin escribir sentencias SQL manuales mediante el uso de Hibernate/ORM.</li>
-            <li><strong>Capa de Transferencia (DTOs):</strong> Objetos inmutables (usando <code>Records</code> de Java 21) que filtran la información. Un cliente que consulta un producto no necesita ver campos técnicos de auditoría, por lo que el DTO actúa como escudo.</li>
+            <li><strong>Capa de Controladores (Controllers):</strong> Utiliza <code>@RestController</code>. Se encarga de exponer los endpoints (ej. <code>/api/ventas</code>), deserializar los JSON entrantes, aplicar reglas de validación de sintaxis (<code>@Valid</code>, <code>@NotNull</code>) y delegar el proceso real a la capa de servicios.</li>
+            <li><strong>Capa de Servicios (Business Logic):</strong> Anotada con <code>@Service</code>. Es el "cerebro" del sistema. Aquí se calculan los impuestos (12% de IVA en Guatemala), se valida la existencia de stock, y se gestiona la lógica de proformas.</li>
+            <li><strong>Capa de Repositorios (Data Access):</strong> Implementa <code>JpaRepository</code>. Aísla toda la interacción con la base de datos PostgreSQL, utilizando Hibernate para traducir los objetos de Java a comandos SQL de forma transparente.</li>
+            <li><strong>Manejo Global de Excepciones:</strong> Un componente <code>@RestControllerAdvice</code> intercepta cualquier error (como intentar vender material sin stock o buscar un producto que no existe) y devuelve un formato JSON de error estándar, evitando que el servidor colapse.</li>
         </ul>
 
-        <h2 id="bd">3. Diseño de Base de Datos</h2>
-        <p>La base de datos relacional (PostgreSQL) se diseña en torno a las siguientes entidades transaccionales:</p>
+        <h2 id="tecnologias">3. Stack Tecnológico Utilizado</h2>
+        <p>La selección tecnológica del backend responde a estándares corporativos actuales de alta disponibilidad:</p>
+        <ul>
+            <li><strong>Java 21:</strong> Lenguaje principal (utilizando características modernas como los <i>Records</i> para los DTOs).</li>
+            <li><strong>Spring Boot 3:</strong> Framework de inyección de dependencias y auto-configuración rápida.</li>
+            <li><strong>PostgreSQL 17:</strong> Motor de base de datos relacional para garantizar la integridad de las transacciones (ejecutado sobre contenedores de Docker).</li>
+            <li><strong>Spring Data JPA (Hibernate):</strong> ORM para el mapeo de tablas relacionales a clases de Java.</li>
+            <li><strong>Swagger (OpenAPI 3):</strong> Herramienta para generar una interfaz visual de prueba y documentación en tiempo real.</li>
+            <li><strong>Lombok:</strong> Librería que elimina el código repetitivo en Java (como los getters, setters y constructores) mediante anotaciones.</li>
+        </ul>
+
+        <h2 id="bd">4. Diseño de Base de Datos y Modelo de Dominio</h2>
+        <p>El diseño de la base de datos está normalizado y consta de las siguientes entidades clave. Todas las relaciones están protegidas mediante Llaves Foráneas (Foreign Keys).</p>
+
+        <div class="img-placeholder">
+            [AGREGAR AQUÍ: IMAGEN - Diagrama Entidad-Relación (ERD) mostrando las tablas Producto, Venta, DetalleVenta, Cotizacion, etc.]
+        </div>
+
         <table>
-            <tr><th>Entidad Principal</th><th>Relaciones</th><th>Propósito en el Negocio</th></tr>
-            <tr><td><strong>Producto</strong></td><td>Pertenece a (N:1) Categoría y Proveedor</td><td>Catálogo central. Controla precios sin IVA y umbrales de stock mínimo.</td></tr>
-            <tr><td><strong>Venta / DetalleVenta</strong></td><td>Contiene (1:N) Detalles. Referencia (N:1) Cliente.</td><td>Facturación. Consolida subtotal, calcula IVA del 12% y registra totales.</td></tr>
-            <tr><td><strong>Cotizacion</strong></td><td>Convertible a Venta (1:1).</td><td>Proformas con vigencia de días. No alteran el stock hasta convertirse.</td></tr>
-            <tr><td><strong>MovimientoKardex</strong></td><td>Audita (N:1) Productos.</td><td>El corazón del inventario. Registra Fecha, Tipo (Entrada/Salida), Stock Anterior y Nuevo.</td></tr>
+            <tr>
+                <th>Tabla / Entidad</th>
+                <th>Responsabilidad en el Sistema</th>
+            </tr>
+            <tr>
+                <td><strong>Categorias y Proveedores</strong></td>
+                <td>Catálogos de soporte. Clasifican el inventario y guardan el NIT/Contacto de quienes proveen la mercadería.</td>
+            </tr>
+            <tr>
+                <td><strong>Productos</strong></td>
+                <td>Catálogo central. Guarda el precio sin IVA, la unidad de medida (Galón, Metro, Unidad) y el umbral de stock mínimo. Cuenta con borrado lógico (campo "activo") para no romper facturas antiguas si un producto se descataloga.</td>
+            </tr>
+            <tr>
+                <td><strong>Kardex (Movimientos)</strong></td>
+                <td>Bitácora de auditoría inmutable. Registra cada vez que entra o sale mercancía (Fecha, Tipo, Stock Anterior y Stock Nuevo).</td>
+            </tr>
+            <tr>
+                <td><strong>Ventas y Detalles</strong></td>
+                <td>Módulo de facturación. Consolida el pago, el subtotal sumado y el cálculo automático de los impuestos.</td>
+            </tr>
         </table>
 
-        <h2 id="modulos">4. Descripción de Módulos Core</h2>
-        <h3>A. Módulo de Inventario y Kárdex Inteligente</h3>
-        <p>Implementa el patrón de "Fuente Única de Verdad". El controlador prohíbe explícitamente enviar actualizaciones del campo <code>stock</code> mediante peticiones PUT. Todo abastecimiento debe pasar por el <code>InventarioService.registrarEntrada()</code>, el cual incrementa el inventario, calcula costos totales e inyecta un asiento de tipo <code>ENTRADA</code> en el Kárdex.</p>
+        <h2 id="modulos">5. Lógica de Negocio y Módulos Principales</h2>
         
-        <h3>B. Módulo de Cotizaciones a Ventas (Transaccional)</h3>
-        <p>Una característica sobresaliente es la "Magia" de conversión. El endpoint <code>/api/cotizaciones/{id}/convertir-venta</code> transforma una proforma en una factura real en milisegundos. Esta operación está envuelta en una transacción <code>@Transactional</code>: si el cliente cotizó 10 bolsas de cemento hace una semana, pero hoy al convertirla solo quedan 5, el sistema detecta la anomalía, rechaza la operación y deshace (rollback) cualquier cambio parcial.</p>
-
-        <h3>C. Calculadora de Materiales (Valor Agregado)</h3>
-        <p>Módulo de utilidad de ferretería. Aplica algoritmos físicos simples (rendimiento de metros cuadrados por galón de pintura o bolsa de cemento) para sugerir cantidades. Posteriormente, cruza este dato dinámicamente con la base de datos para sugerirle al cliente únicamente los productos de los cuales hay stock suficiente.</p>
-
-        <h2 id="reflexion">5. Reflexión de Aprendizaje y Resolución de Problemas (Post-Mortem)</h2>
-        <div class="conclusion">
-            <h3>¿Qué aprendí o reforcé?</h3>
-            <p>El mayor refuerzo fue comprender la robustez del tipado estricto y la Inyección de Dependencias. Viniendo de ecosistemas como Node.js (Express), donde uno debe enlazar a mano las rutas con los controladores, Spring Boot me demostró que el uso de anotaciones (<code>@Autowired</code>, <code>@RestController</code>) automatiza la creación de componentes. Aprendí a delegar el trabajo pesado de base de datos a <strong>JPA (Hibernate)</strong> en lugar de escribir consultas crudas o armar ORMs desde cero.</p>
-            
-            <h3>¿Qué fue lo más interesante?</h3>
-            <p>Sin duda, la anotación <strong><code>@Transactional</code></strong>. En un proyecto básico de Node.js, si ocurre un error a la mitad de un ciclo <i>for</i> mientras descuento 10 productos, los primeros 5 quedan descontados y la base de datos queda corrupta. Con Spring Boot, aprendí que esta simple anotación asegura el principio ACID: o se guarda toda la factura y sus detalles, o no se guarda absolutamente nada.</p>
-            
-            <h3>¿Qué NO sabía cómo funcionaba y ahora tengo bien claro? (El caso del Error 500 y Lazy Loading)</h3>
-            <p>Al finalizar el proyecto, me topé con un error interesante: <strong>El servidor arrojaba un código HTTP 500 al consultar los productos</strong> (<code>LazyInitializationException</code>). No entendía por qué, si el código estaba perfecto.</p>
-            <p><strong>El Descubrimiento:</strong> Descubrí cómo maneja Hibernate las relaciones (<i>Lazy Loading</i> o Carga Perezosa). Para ahorrar RAM, Java no extrae la "Categoría" y el "Proveedor" de un Producto hasta que uno los pide explícitamente. Al intentar serializar el producto a JSON en el controlador, la sesión de base de datos ya se había cerrado.</p>
-            <p><strong>La Solución:</strong> Comprendí el concepto de <code>open-in-view</code>. Al configurar <code>spring.jpa.open-in-view=true</code> en mi archivo <code>application.properties</code>, le ordené al framework que mantuviera viva la conexión a la base de datos hasta que el JSON terminara de renderizarse y enviarse al cliente (Swagger/Postman). Este problema no suele ocurrir en JavaScript porque todo se carga en objetos planos de memoria. Entender cómo gestiona las sesiones un lenguaje empresarial como Java me dio mucha claridad sobre el rendimiento de las bases de datos.</p>
+        <h3>A. Inventario Auditado (Kárdex)</h3>
+        <p>En ThunderMax, está prohibido técnicamente que el usuario modifique la columna <code>stock</code> de la tabla Productos manualmente. Para agregar mercancía, se debe realizar un proceso de "Entrada", el cual automáticamente inserta un registro tipo <code>ENTRADA</code> en la bitácora del Kárdex, subiendo el inventario. De la misma manera, anular una venta devuelve el inventario usando un registro tipo <code>DEVOLUCION</code>.</p>
+        
+        <div class="img-placeholder">
+            [AGREGAR AQUÍ: IMAGEN - Captura de pantalla de Swagger o Postman consultando el Kárdex de un producto]
         </div>
+
+        <h3>B. El Poder de las Cotizaciones</h3>
+        <p>Los vendedores pueden generar cotizaciones (proformas) que amparan un precio por ciertos días. Destaca el endpoint de "Conversión Mágica", el cual toma el ID de una cotización y la transforma en una Factura real. En este proceso, el servicio verifica en milisegundos si todavía hay stock suficiente para respetarle la cotización al cliente.</p>
+
+        <h3>C. Calculadora de Herramientas y Reportes</h3>
+        <p>Para acercarse al modelo real de una ferretería, se implementó una función matemática que, dados el "largo" y "ancho" de una superficie, calcula cuántos galones de pintura o bolsas de cemento se requieren, y hace una consulta dinámica a la BD para recomendar qué marcas están en stock actualmente.</p>
+
+        <div class="img-placeholder">
+            [AGREGAR AQUÍ: IMAGEN - Captura del endpoint de la Calculadora de Pintura mostrando las sugerencias]
+        </div>
+
+        <h2 id="reflexion">6. Reflexión de Aprendizaje y Resolución de Problemas</h2>
+        <div class="conclusion">
+            <h3>¿Qué aprendí o reforcé en esta transición?</h3>
+            <p>Al venir de un ecosistema fuertemente ligado a JavaScript y Node.js (donde el enrutamiento y la lógica suelen convivir estrechamente), este proyecto reforzó brutalmente mis bases de <strong>Arquitectura y Patrones de Diseño</strong>. En Spring Boot, el uso del contenedor de Inversión de Control (IoC) y las anotaciones como <code>@Autowired</code> automatizan la inyección de dependencias. Comprendí el inmenso valor que aportan los "Data Transfer Objects (DTOs)" para evitar exponer la base de datos de forma directa en las respuestas HTTP.</p>
+            
+            <h3>Lo más interesante: El poder del `@Transactional`</h3>
+            <p>El hallazgo más importante para garantizar la calidad del software fue entender el principio <strong>ACID</strong> en las bases de datos a través de la anotación <code>@Transactional</code>. Si en el servicio de Ventas el cliente compra 5 productos distintos, y el sistema falla por falta de stock al intentar procesar el quinto producto, Spring Boot hace un <i>rollback</i> automático e instantáneo (deshace todos los descuentos de stock previos y borra el rastro de la factura parcial), evitando completamente que la base de datos quede corrupta o inconsistente.</p>
+            
+            <div class="img-placeholder" style="padding: 2rem;">
+                [AGREGAR AQUÍ: IMAGEN - Captura de código mostrando la anotación @Transactional en el VentaService]
+            </div>
+
+            <h3>El Misterio del Error 500: Qué NO sabía cómo funcionaba y ahora tengo bien claro</h3>
+            <p>A pesar de que mi código compilaba perfectamente, al realizar la prueba de listar los productos en Swagger, el sistema colapsó y devolvió un <strong>Error Interno del Servidor (500)</strong> originado por una <code>LazyInitializationException</code>.</p>
+            
+            <div class="img-placeholder" style="padding: 2rem;">
+                [AGREGAR AQUÍ: IMAGEN - Captura del error 500 arrojado por Swagger inicialmente]
+            </div>
+
+            <p><strong>El Descubrimiento:</strong> No sabía cómo Hibernate manejaba el rendimiento (<i>Lazy Loading</i> o Carga Perezosa). Para no saturar la memoria RAM, Java no extrae las relaciones (como la Categoría y el Proveedor de un Producto) de la base de datos hasta que uno las exige explícitamente. Cuando el framework intentó armar el archivo JSON para enviárselo al cliente, la sesión de la base de datos ya se había desconectado por protección.</p>
+            
+            <p><strong>La Solución:</strong> Comprendí el concepto y el ciclo de vida de la conexión a la base de datos. Fui al archivo <code>application.properties</code> y configuré <code>spring.jpa.open-in-view=true</code>. Esta configuración le ordenó a Spring Boot mantener viva la conexión SQL hasta que el archivo JSON terminara de empaquetarse por completo en el Controlador. Esto solucionó el error inmediatamente y la API respondió con código <strong>200 OK</strong>. Fue una lección invaluable sobre cómo la optimización de memoria de un lenguaje empresarial interactúa con la serialización web.</p>
+
+            <div class="img-placeholder" style="padding: 2rem;">
+                [AGREGAR AQUÍ: IMAGEN - Captura del Swagger mostrando el código 200 OK con la solución exitosa]
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
