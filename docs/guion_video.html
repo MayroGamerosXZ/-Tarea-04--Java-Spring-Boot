@@ -1,94 +1,255 @@
-# 🎬 Guion para el Video: Presentación de ThunderMax
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guion para el Video - ThunderMax</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background-color: #f8fafc; 
+            padding: 2rem; 
+            color: #334155; 
+            line-height: 1.8; 
+        }
+        .container { 
+            max-width: 800px; 
+            margin: 0 auto; 
+            background: white; 
+            padding: 3rem 4rem; 
+            border-radius: 12px; 
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); 
+        }
+        h1 { 
+            color: #0f172a; 
+            text-align: center; 
+            border-bottom: 3px solid #38bdf8; 
+            padding-bottom: 1rem; 
+            margin-bottom: 2rem;
+        }
+        .nota { 
+            background-color: #fffbeb; 
+            color: #b45309; 
+            padding: 1.2rem; 
+            border-left: 5px solid #f59e0b; 
+            border-radius: 0 8px 8px 0; 
+            margin-bottom: 2rem; 
+            font-style: italic; 
+        }
+        .escena { 
+            margin-top: 3rem; 
+            padding-top: 2rem; 
+            border-top: 2px dashed #cbd5e1; 
+        }
+        h2 { 
+            color: #0284c7; 
+            font-size: 1.4rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 1.5rem;
+        }
+        .accion { 
+            background-color: #f1f5f9; 
+            color: #475569; 
+            padding: 1rem 1.5rem; 
+            border-radius: 8px; 
+            font-weight: 500; 
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        .accion::before {
+            content: "🎥";
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        .dialogo { 
+            margin-bottom: 2rem; 
+        }
+        .personaje { 
+            font-weight: 800; 
+            color: #be123c; 
+            font-size: 1.1rem; 
+            display: block;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .texto { 
+            font-size: 1.3rem; /* Letra grande para leer de lejos */
+            color: #0f172a;
+            display: block; 
+            padding-left: 1rem;
+            border-left: 3px solid #e2e8f0;
+        }
+        code { 
+            background: #e2e8f0; 
+            color: #0369a1; 
+            padding: 0.2rem 0.5rem; 
+            border-radius: 4px; 
+            font-family: monospace; 
+            font-weight: bold; 
+        }
+    </style>
+</head>
+<body>
 
-*(Este es el texto sugerido que puedes leer mientras muestras tu pantalla grabando el video. Hemos incluido los comandos y los momentos exactos donde debes dar clic).*
+    <div class="container">
+        <h1>🎬 Guion del Video: ThunderMax</h1>
+        
+        <div class="nota">
+            <strong>Instrucciones:</strong> Este es el texto sugerido que puedes leer mientras muestras tu pantalla grabando el video. Puedes poner esta ventana en la mitad de tu pantalla para usarla como teleprompter. Hemos incluido los comandos y los momentos exactos donde debes dar clic.
+        </div>
 
----
+        <!-- ESCENA 1 -->
+        <div class="escena">
+            <h2>Escena 1: Inicio y Arranque del Sistema</h2>
+            
+            <div class="accion">
+                En Pantalla: Muestra IntelliJ IDEA o tu terminal abierta en la carpeta del proyecto.
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú (Hablando al micrófono):</span>
+                <span class="texto">"Hola, mi nombre es Mayro Gameros. Como parte del curso de Análisis de Sistemas, les presento mi proyecto 'ThunderMax', una API REST diseñada para gestionar una ferretería guatemalteca. El sistema fue construido utilizando arquitectura de capas con Java y Spring Boot 3."</span>
+            </div>
 
-### [ESCENA 1: INICIO Y ARRANQUE DEL SISTEMA]
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Lo primero que haré será levantar mi base de datos PostgreSQL utilizando Docker. En mi terminal ejecuto el comando:"</span>
+            </div>
 
-**(Pantalla: Mostrando IntelliJ IDEA o la terminal abierta en la carpeta del proyecto)**
+            <div class="accion">
+                Acción: Escribe y ejecuta en la consola <code>docker compose up -d</code>
+            </div>
 
-**Tú (Hablando a la cámara/micrófono):**
-"Hola, mi nombre es Mayro Gameros. Como parte del curso de Análisis de Sistemas, les presento mi proyecto 'ThunderMax', una API REST diseñada para gestionar una ferretería guatemalteca. El sistema fue construido utilizando arquitectura MVC con **Java y Spring Boot 3**."
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Con la base de datos levantada en el puerto 5433 para evitar conflictos, ahora ejecuto el backend mediante el botón de Play en IntelliJ IDEA."</span>
+            </div>
 
-"Lo primero que haré será levantar mi base de datos PostgreSQL utilizando Docker. En mi terminal ejecuto el comando:"
+            <div class="accion">
+                Acción: Haces clic en el botón de Play (▶️) en IntelliJ o escribes <code>./mvnw spring-boot:run</code>
+            </div>
 
-*(Acción: Escribes y ejecutas en la consola `docker compose up -d`)*
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Al arrancar, un componente que programé llamado 'DataSeeder' inicializa las tablas e inyecta automáticamente 21 productos de ferretería, clientes y proveedores para tener datos listos de prueba."</span>
+            </div>
+        </div>
 
-"Con la base de datos levantada en el puerto 5433 para evitar conflictos, ahora ejecuto el backend de Spring Boot mediante el botón de Play en IntelliJ IDEA, o bien usando el comando de Maven."
+        <!-- ESCENA 2 -->
+        <div class="escena">
+            <h2>Escena 2: Pruebas en Swagger (Inventario y Kárdex)</h2>
+            
+            <div class="accion">
+                En Pantalla: Cambias la vista a Google Chrome, entrando a <code>http://localhost:8080/swagger-ui.html</code>
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Para probar la funcionalidad, utilicé Swagger, el cual auto-documenta mi código de Java. Vamos a hacer una prueba crítica: El manejo de inventario. En este sistema, el stock no se puede alterar a mano. Se hace a través del Kárdex."</span>
+            </div>
 
-*(Acción: Haces clic en ▶️ Run 'ThunderMaxApplication' o escribes `./mvnw spring-boot:run` en la terminal de IntelliJ).*
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Voy al endpoint de 'Entradas', y haré una petición para comprar 50 unidades del producto 1, que es un martillo."</span>
+            </div>
 
-"Al arrancar, podemos ver en la consola cómo Spring Boot inicializa las tablas, y un componente que programé llamado `DataSeeder` inyecta automáticamente 21 productos de ferretería, clientes y proveedores para tener datos de prueba."
+            <div class="accion">
+                Acción: Abres POST /api/entradas. Presionas 'Try it out'. Pones el JSON con 50 de cantidad y le das a 'Execute'.
+            </div>
 
----
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"El sistema me devuelve un código 201 Created. Ahora, si voy a revisar el Kárdex de ese producto específico..."</span>
+            </div>
 
-### [ESCENA 2: PRUEBAS EN SWAGGER (INVENTARIO Y KÁRDEX)]
+            <div class="accion">
+                Acción: Vas a GET /api/productos/1/kardex y le das a Execute.
+            </div>
 
-**(Pantalla: Cambias la vista a Google Chrome, entrando a `http://localhost:8080/swagger-ui.html`)**
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"...podemos ver que la bitácora registró perfectamente que el stock anterior era 0, y el nuevo stock es 50, auditando la compra."</span>
+            </div>
+        </div>
 
-**Tú:**
-"Para probar la funcionalidad, utilicé Swagger, el cual auto-documenta mis controladores de Java. Aquí podemos ver los 8 módulos del sistema.
+        <!-- ESCENA 3 -->
+        <div class="escena">
+            <h2>Escena 3: Pruebas de Facturación y Transacciones</h2>
+            
+            <div class="accion">
+                En Pantalla: Sigues en Swagger, pero ahora bajas a la sección de Ventas.
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Ahora hagamos una venta. Uno de los puntos clave del sistema es el uso de transacciones con la anotación de base de datos '@Transactional'. Si intento vender, el sistema descuenta el stock y calcula el IVA del 12%."</span>
+            </div>
 
-Vamos a hacer una prueba crítica: **El manejo de inventario**. En este sistema, el stock no se puede alterar a mano. Se hace a través del Kárdex. Voy al endpoint de 'Entradas', y haré una petición POST para comprar 50 unidades del producto 1 (que es un martillo)."
+            <div class="accion">
+                Acción: Abres POST /api/ventas. Presionas 'Try it out' y envías una venta de 5 unidades.
+            </div>
 
-*(Acción: Abres POST /api/entradas. Presionas 'Try it out'. Pones `{"productoId": 1, "proveedorId": 1, "cantidad": 50, "costoUnitario": 45}` y le das a 'Execute').*
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Aquí vemos la factura generada exitosamente. Sin embargo, si yo intentara vender 9,000 unidades de un producto, la anotación transaccional aborta la operación completa para no corromper la base de datos, lanzando un error de que el stock es insuficiente."</span>
+            </div>
+        </div>
 
-**Tú:**
-"El sistema me devuelve un código 201 Created. Ahora, si voy a revisar el Kárdex de ese producto..."
+        <!-- ESCENA 4 -->
+        <div class="escena">
+            <h2>Escena 4: Calculadora y Valor Agregado</h2>
+            
+            <div class="accion">
+                En Pantalla: Vas a la sección de Calculadora y Reportes en Swagger.
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Como valor agregado, le implementé a la ferretería una calculadora. Le mando el largo y ancho de una pared en metros..."</span>
+            </div>
 
-*(Acción: Vas a GET /api/productos/1/kardex. Le das a Execute).*
+            <div class="accion">
+                Acción: Ejecutas POST /api/calculadora/pintura mandando 10 de largo y 5 de ancho.
+            </div>
 
-**Tú:**
-"...podemos ver que el Kárdex registró perfectamente que el stock anterior era 0, y el nuevo stock es 50, auditando la compra."
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"...y el sistema me responde en JSON que necesito comprar 2 galones de pintura, y me sugiere automáticamente las pinturas que hay actualmente en bodega."</span>
+            </div>
+        </div>
 
----
+        <!-- ESCENA 5 -->
+        <div class="escena">
+            <h2>Escena 5: Reflexión Final y Errores Solucionados</h2>
+            
+            <div class="accion">
+                En Pantalla: Vuelves a la cámara o muestras la estructura de tu código en IntelliJ.
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Para finalizar, quiero responder a lo solicitado en el informe. Lo que más reforcé fue la Arquitectura de Capas. Al venir de Node.js, donde los controladores y rutas se mezclan, aprender a usar Spring Boot me obligó a separar el enrutamiento web de la lógica de negocio."</span>
+            </div>
 
-### [ESCENA 3: PRUEBAS DE FACTURACIÓN Y TRANSACCIONES]
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Lo que NO sabía cómo funcionaba, fue algo muy curioso. Al probar la API por primera vez, el sistema me arrojó un Error Interno 500 originado por un fallo llamado 'Carga Perezosa' o Lazy Loading. En Java, para ahorrar memoria RAM, las relaciones entre tablas no se cargan automáticamente."</span>
+            </div>
 
-**(Pantalla: Sigues en Swagger, en la sección de Ventas)**
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Para solucionarlo, descubrí y configuré el concepto de 'open-in-view' en las propiedades de la aplicación, lo cual le ordenó a mi sistema mantener viva la conexión a la base de datos hasta terminar de renderizar la información. Es un nivel de control de optimización que en JavaScript rara vez notamos."</span>
+            </div>
 
-**Tú:**
-"Ahora hagamos una venta. Uno de los puntos clave del sistema es el uso de transacciones con la anotación `@Transactional`. Si intento vender, el sistema descuenta el stock automáticamente y calcula el IVA."
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Este ha sido mi proyecto ThunderMax, muchas gracias por su atención."</span>
+            </div>
+        </div>
 
-*(Acción: Abres POST /api/ventas. Presionas 'Try it out' y usas el JSON predeterminado o uno simple para comprar 5 unidades. Le das a Execute).*
+    </div>
 
-**Tú:**
-"Aquí vemos la factura generada (Código 201). El subtotal y el IVA se calcularon. Si yo intentara vender 9,000 unidades de un producto, la anotación `@Transactional` en mi servicio se encarga de abortar la operación para no corromper la base de datos, lanzando un error 400 avisando que el stock es insuficiente."
-
----
-
-### [ESCENA 4: FUNCIONES EXTRA Y REPORTES]
-
-**(Pantalla: Vas a la sección de Calculadora y Reportes en Swagger)**
-
-**Tú:**
-"Como valor agregado, le implementé a la ferretería una calculadora. Le mando el largo y ancho de una pared..."
-
-*(Acción: Ejecutas POST /api/calculadora/pintura mandando 10 de largo y 5 de ancho)*
-
-**Tú:**
-"...y el sistema me responde en JSON que necesito comprar 2 galones de pintura, y me sugiere automáticamente las pinturas que la base de datos tiene actualmente en stock."
-
----
-
-### [ESCENA 5: REFLEXIÓN DE APRENDIZAJE Y EL ERROR DE LAZY LOADING]
-
-**(Pantalla: Vuelves a la cámara o muestras una diapositiva o la estructura de paquetes en IntelliJ)**
-
-**Tú:**
-"Para finalizar, quiero responder a las preguntas solicitadas en el informe:
-
-**1. ¿Qué aprendí o reforcé?**
-Reforcé mucho mis bases sobre Arquitectura de N-Capas. Al venir de Node.js, donde los controladores y rutas se mezclan muy fácilmente, aprender a usar las anotaciones de Spring Boot (`@Service`, `@RestController`) me obligó a separar la lógica de negocio del enrutamiento web.
-
-**2. ¿Qué fue lo más interesante?**
-Lo más interesante fue el manejo del ORM Hibernate para la base de datos, y cómo una simple anotación (`@Transactional`) puede salvar tu sistema de quedar con datos corruptos si una compra falla a la mitad.
-
-**3. ¿Qué no sabía cómo funcionaba y ahora tengo claro?**
-Esto fue súper curioso. Al probar la API para traer la lista de productos, el sistema me arrojó un **error interno 500**. Descubrí que la causa fue una excepción llamada `LazyInitializationException`. En Java, para ahorrar memoria, las relaciones entre tablas (como la categoría de un producto) no se cargan automáticamente (Carga Perezosa o Lazy Loading). Al intentar pintar el JSON, la conexión a la base de datos ya se había cerrado. 
-La solución fue comprender el concepto de `open-in-view` en Spring Boot, lo cual aprendí a configurar en el archivo `application.properties` para mantener la sesión de lectura abierta. Es un nivel de control de base de datos que en entornos más simples de JavaScript uno no suele notar."
-
-"Este ha sido mi proyecto ThunderMax, muchas gracias por su atención."
-
-*(Fin del video).*
+</body>
+</html>
