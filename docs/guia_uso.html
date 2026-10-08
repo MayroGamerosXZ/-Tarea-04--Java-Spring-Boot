@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Uso - ThunderMax Ferretería</title>
+    <style>
+        :root {
+            --primary: #0284c7;
+            --primary-dark: #0369a1;
+            --accent: #f59e0b;
+            --bg: #f8fafc;
+            --text: #334155;
+            --card-bg: #ffffff;
+            --code-bg: #1e293b;
+            --code-text: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--bg);
+            margin: 0;
+            padding: 0;
+        }
+
+        .header {
+            background-color: var(--primary);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: -2rem auto 2rem;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            color: var(--primary-dark);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        h3 {
+            color: var(--primary);
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        code {
+            background: #f1f5f9;
+            color: #db2777;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+        }
+
+        pre {
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .alert {
+            background: #fffbeb;
+            border-left: 4px solid var(--accent);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .alert strong {
+            color: #b45309;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .feature-box {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .feature-box h4 {
+            margin-top: 0;
+            color: var(--primary-dark);
+        }
+
+        ul {
+            padding-left: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>⚡ Guía de Uso - ThunderMax</h1>
+        <p>Sistema backend y frontend interactivo para Ferreterías (Spring Boot + PostgreSQL)</p>
+    </div>
+
+    <div class="container">
+        
+        <!-- SECCIÓN 1: DOCKER -->
+        <div class="card">
+            <h2>1. Preparar la Base de Datos (Docker)</h2>
+            <p>El sistema requiere una base de datos PostgreSQL. Para no instalar nada en tu equipo de forma permanente, usamos Docker.</p>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Abre la aplicación <strong>Docker Desktop</strong> y asegúrate de que esté corriendo en segundo plano.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Abre una terminal (CMD o PowerShell) en la carpeta de tu proyecto (<code>Tarea 04</code>).</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    Ejecuta el siguiente comando para levantar el contenedor:
+                    <pre><code>docker compose up -d</code></pre>
+                </div>
+            </div>
+            <div class="alert">
+                <strong>💡 Nota importante:</strong> La base de datos se levanta en el puerto <strong>5433</strong> para no hacer conflicto con otras bases de datos que pudieras tener instaladas.
+            </div>
+        </div>
+
+        <!-- SECCIÓN 2: INTELLIJ -->
+        <div class="card">
+            <h2>2. Ejecutar el Proyecto en IntelliJ IDEA</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>Abre IntelliJ IDEA y selecciona <strong>Open</strong>. Busca la carpeta <code>Tarea 04</code> y ábrela.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>Espera a que IntelliJ descargue las dependencias de Maven (verás una barra de carga abajo a la derecha).</div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>Navega por las carpetas en la izquierda: <code>src > main > java > com > thundermax > ferreteria</code>.</div>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>Abre el archivo <code>ThunderMaxApplication.java</code> y haz clic en el botón verde de <strong>Play (▶️)</strong> que está junto a la línea de código para iniciar la app.</div>
+            </div>
+            
+            <div class="alert">
+                <strong>🔥 Magia inicial:</strong> Al arrancar, un archivo llamado <code>DataSeeder</code> inyectará automáticamente datos de prueba (categorías, martillos, cemento, clientes y proveedores) en la base de datos vacía.
+            </div>
+        </div>
+
+        <!-- SECCIÓN 3: BASE DE DATOS EN INTELLIJ -->
+        <div class="card">
+            <h2>3. Ver las Tablas en IntelliJ Ultimate</h2>
+            <p>Ya que usas IntelliJ IDEA Ultimate, puedes inspeccionar la base de datos directamente en el editor sin instalar DBeaver o pgAdmin.</p>
+            
+            <ol>
+                <li>En el menú lateral derecho de IntelliJ, haz clic en la pestaña <strong>Database</strong>.</li>
+                <li>Haz clic en el icono de <strong>+</strong> > <strong>Data Source</strong> > <strong>PostgreSQL</strong>.</li>
+                <li>Llena las credenciales:
+                    <ul>
+                        <li><strong>User:</strong> <code>thundermax</code></li>
+                        <li><strong>Password:</strong> <code>thundermax123</code></li>
+                        <li><strong>Port:</strong> <code>5433</code> (Asegúrate de cambiar el 5432)</li>
+                        <li><strong>Database:</strong> <code>thundermax_db</code></li>
+                    </ul>
+                </li>
+                <li>Haz clic en <strong>Test Connection</strong>. Si te pide descargar un driver, acepta. Luego presiona <strong>OK</strong>.</li>
+                <li>Abre el árbol de carpetas: <code>thundermax_db > schemas > public > tables</code>. Haz doble clic en la tabla <strong>productos</strong> para ver todo el inventario generado.</li>
+            </ol>
+        </div>
+
+        <!-- SECCIÓN 4: PROCESOS Y LÓGICA -->
+        <div class="card">
+            <h2>4. ¿Cómo funcionan los procesos principales?</h2>
+            <p>Este sistema simula la vida real de una ferretería:</p>
+            
+            <div class="grid">
+                <div class="feature-box">
+                    <h4>📦 Inventario y Kárdex</h4>
+                    <p>Los productos nacen con <strong>Stock 0</strong>. Para sumar stock, no se edita el producto, sino que se hace una <strong>Entrada de Inventario</strong>. Todas las entradas, ventas y devoluciones se registran en una bitácora llamada <strong>Kárdex</strong>.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>🧾 Cotizaciones a Ventas</h4>
+                    <p>Puedes crear proformas/cotizaciones. Hay un endpoint especial llamado <code>convertir-venta</code> que toma la cotización, verifica si hay suficiente stock de cada cosa y genera la factura descontando la mercadería al instante.</p>
+                </div>
+                <div class="feature-box">
+                    <h4>🧮 Calculadora Inteligente</h4>
+                    <p>La API puede calcular materiales. Le mandas "largo" y "ancho" en metros, y el sistema te responde: <em>"Necesitas 2 galones de pintura. Aquí están los botes de pintura disponibles."</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN 5: INTERFAZ GRÁFICA FRONTEND -->
+        <div class="card">
+            <h2>5. Interfaz Gráfica (Dashboard Web)</h2>
+            <p>El sistema cuenta con un <strong>Frontend Nativo</strong> implementado con HTML/CSS/JS utilizando el Sistema de Diseño <em>NovaSpark</em>.</p>
+            
+            <h3>Punto de Venta e Inventario</h3>
+            <p>Abre tu navegador (Chrome o Edge) y entra a la ruta principal:</p>
+            <pre><code>http://localhost:8080/</code></pre>
+            <ol>
+                <li><strong>Inventario:</strong> Verás una tabla conectada en tiempo real a la API, mostrando el stock y precios de cada producto. Si el stock es bajo, verás una alerta crítica roja.</li>
+                <li><strong>Punto de Venta:</strong> Puedes registrar ventas visualmente. Selecciona un producto, pon la cantidad y haz clic en "Confirmar y Cobrar". El sistema hará el descuento automáticamente e impedirá la venta si no hay stock (usando <code>@Transactional</code> por detrás).</li>
+            </ol>
+        </div>
+
+        <!-- SECCIÓN 6: SWAGGER Y POSTMAN -->
+        <div class="card">
+            <h2>6. Pruebas de código (Swagger y Postman)</h2>
+            
+            <h3>A. Interfaz Swagger (Para mostrar en tu video)</h3>
+            <p>Para probar las lógicas complejas como el Kárdex o la Calculadora, abre:</p>
+            <pre><code>http://localhost:8080/swagger-ui.html</code></pre>
+            <ol>
+                <li>Haz clic en cualquier endpoint (ej. <code>GET /api/productos/1/kardex</code>).</li>
+                <li>Haz clic en el botón <strong>Try it out</strong>.</li>
+                <li>Haz clic en <strong>Execute</strong> y revisa la respuesta JSON.</li>
+            </ol>
+
+            <h3>B. Postman</h3>
+            <p>Si prefieres usar Postman, te he dejado un archivo preparado:</p>
+            <ol>
+                <li>Abre Postman y haz clic en <strong>Import</strong> (arriba a la izquierda).</li>
+                <li>Selecciona el archivo <code>docs/postman/ThunderMax.postman_collection.json</code> de tu proyecto.</li>
+                <li>A la izquierda aparecerá la colección <strong>ThunderMax - Ferretería</strong> lista para usarse.</li>
+            </ol>
+        </div>
+
+    </div>
+
+</body>
+</html>
