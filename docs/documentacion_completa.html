@@ -100,7 +100,7 @@
             <li><strong>Spring Boot 3:</strong> Framework de inyección de dependencias y auto-configuración rápida.</li>
             <li><strong>PostgreSQL 17:</strong> Motor de base de datos relacional para garantizar la integridad de las transacciones (ejecutado sobre contenedores de Docker).</li>
             <li><strong>Spring Data JPA (Hibernate):</strong> ORM para el mapeo de tablas relacionales a clases de Java.</li>
-            <li><strong>Swagger (OpenAPI 3):</strong> Herramienta para generar una interfaz visual de prueba y documentación en tiempo real.</li>
+            <li><strong>Postman y Swagger (OpenAPI 3):</strong> Herramientas utilizadas para pruebas de los endpoints REST, simulación de peticiones HTTP y validación de las estructuras JSON de respuesta.</li>
             <li><strong>Lombok:</strong> Librería que elimina el código repetitivo en Java (como los getters, setters y constructores) mediante anotaciones.</li>
         </ul>
 
@@ -140,7 +140,7 @@
         <p>En ThunderMax, está prohibido técnicamente que el usuario modifique la columna <code>stock</code> de la tabla Productos manualmente. Para agregar mercancía, se debe realizar un proceso de "Entrada", el cual automáticamente inserta un registro tipo <code>ENTRADA</code> en la bitácora del Kárdex, subiendo el inventario. De la misma manera, anular una venta devuelve el inventario usando un registro tipo <code>DEVOLUCION</code>.</p>
         
         <div class="img-placeholder">
-            [AGREGAR AQUÍ: IMAGEN - Captura de pantalla de Swagger o Postman consultando el Kárdex de un producto]
+            [AGREGAR AQUÍ: IMAGEN - Captura de Postman mostrando una "Venta" (Status 201 Created y JSON)]
         </div>
 
         <h3>B. El Poder de las Cotizaciones</h3>
@@ -150,7 +150,7 @@
         <p>Para acercarse al modelo real de una ferretería, se implementó una función matemática que, dados el "largo" y "ancho" de una superficie, calcula cuántos galones de pintura o bolsas de cemento se requieren, y hace una consulta dinámica a la BD para recomendar qué marcas están en stock actualmente.</p>
 
         <div class="img-placeholder">
-            [AGREGAR AQUÍ: IMAGEN - Captura del endpoint de la Calculadora de Pintura mostrando las sugerencias]
+            [AGREGAR AQUÍ: IMAGEN - Captura de Postman del endpoint de la Calculadora de Pintura (Status 200 OK y JSON de respuesta)]
         </div>
 
                 <h3>D. Frontend Nativo Integrado (ERP & POS)</h3>
@@ -185,4 +185,5 @@
     </div>
 </body>
 </html>
+
 
