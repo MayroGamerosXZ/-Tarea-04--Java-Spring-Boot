@@ -137,9 +137,9 @@
             </div>
         </div>
 
-        <!-- ESCENA 2: INTERFAZ GRÁFICA FRONTEND -->
+        <!-- ESCENA 2: INTERFAZ GRÁFICA FRONTEND (NUEVO) -->
         <div class="escena">
-            <h2>Escena 2: Interfaz Web (Frontend)</h2>
+            <h2>Escena 2: Interfaz Web Integrada (ERP)</h2>
             
             <div class="accion">
                 En Pantalla: Cambias la vista a Google Chrome, entrando a <code>http://localhost:8080/</code> (la ruta raíz).
@@ -147,31 +147,40 @@
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Aunque el objetivo principal era construir el Backend, decidí implementar también una interfaz gráfica completa para el usuario final. Está integrada dentro del mismo servidor de Spring Boot usando HTML, CSS y JavaScript nativo, y fue diseñada utilizando el Sistema de Diseño Corporativo 'NovaSpark'."</span>
+                <span class="texto">"Aunque el objetivo principal era construir el Backend, decidí desarrollar un módulo de Interfaz Gráfica para tener un ERP completo. Aquí vemos el Panel Principal que me muestra el número de clientes, unidades, y valor monetario del inventario."</span>
+            </div>
+
+            <div class="accion">
+                Acción: Haces clic en el menú "Clientes" y llenas el formulario rápidamente (pon cualquier nombre y NIT). Le das "Guardar".
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Desde este Dashboard web, podemos ver en tiempo real el catálogo de la ferretería que está jalando directamente de nuestra API."</span>
+                <span class="texto">"Si registro un nuevo cliente, se guarda en PostgreSQL mediante mi API. Lo mismo sucede si creo un nuevo producto para la ferretería."</span>
             </div>
 
             <div class="accion">
-                Acción: Haces clic en el menú "Punto de Venta" en la barra lateral izquierda.
+                Acción: Haces clic en "Punto de Venta". Muestras cómo el cliente que acabas de crear ya aparece en la lista desplegable. Llenas una venta y le das "Confirmar".
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Si me voy al Punto de Venta, puedo realizar una transacción de forma visual. El JavaScript del navegador se comunicará por debajo con las rutas de mi backend para validar el stock, descontarlo y procesar la compra."</span>
+                <span class="texto">"Ahora, en el Punto de Venta, selecciono mi nuevo cliente y registro la compra. Lo impresionante de este frontend es la sincronización en tiempo real. Si regreso a la pestaña de Inicio..."</span>
             </div>
 
             <div class="accion">
-                Acción: Seleccionas un producto en el menú desplegable, pones cantidad 2, y le das clic a "Confirmar y Cobrar". Debe salir un mensaje verde de éxito.
+                Acción: Haces clic en "Resumen (Inicio)" para mostrar cómo los números cambiaron.
+            </div>
+
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"...podemos observar que las unidades en inventario bajaron y el valor en Quetzales se actualizó instantáneamente sin tener que darle a F5 ni recargar la página, logrando una experiencia de usuario fluida."</span>
             </div>
         </div>
 
         <!-- ESCENA 3 -->
         <div class="escena">
-            <h2>Escena 3: Pruebas a bajo nivel en Swagger (Inventario y Kárdex)</h2>
+            <h2>Escena 3: Pruebas a bajo nivel en Swagger (Kárdex y Transacciones)</h2>
             
             <div class="accion">
                 En Pantalla: Cambias de pestaña en Chrome, entrando a <code>http://localhost:8080/swagger-ui.html</code>

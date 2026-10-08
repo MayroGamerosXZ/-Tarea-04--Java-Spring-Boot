@@ -153,32 +153,19 @@
             [AGREGAR AQUÍ: IMAGEN - Captura del endpoint de la Calculadora de Pintura mostrando las sugerencias]
         </div>
 
+        <h3>D. Frontend Nativo Integrado (ERP & POS)</h3>
+        <p>Como complemento al robusto backend, se construyó una interfaz de usuario HTML5/CSS3/JS que se conecta asíncronamente con la API. Este frontend no requiere recargar la página; utiliza una función central de sincronización (<code>sincronizarSistema()</code>) que intercepta cada creación de cliente, producto o venta, y actualiza instantáneamente el Dashboard de KPIs y las listas desplegables.</p>
+
         <h2 id="reflexion">6. Reflexión de Aprendizaje y Resolución de Problemas</h2>
         <div class="conclusion">
             <h3>¿Qué aprendí o reforcé en esta transición?</h3>
-            <p>Al venir de un ecosistema fuertemente ligado a JavaScript y Node.js (donde el enrutamiento y la lógica suelen convivir estrechamente), este proyecto reforzó brutalmente mis bases de <strong>Arquitectura y Patrones de Diseño</strong>. En Spring Boot, el uso del contenedor de Inversión de Control (IoC) y las anotaciones como <code>@Autowired</code> automatizan la inyección de dependencias. Comprendí el inmenso valor que aportan los "Data Transfer Objects (DTOs)" para evitar exponer la base de datos de forma directa en las respuestas HTTP.</p>
+            <p>Al venir de un ecosistema fuertemente ligado a JavaScript y Node.js (donde el enrutamiento y la lógica suelen convivir estrechamente), este proyecto reforzó brutalmente mis bases de <strong>Arquitectura de N-Capas y Tipado Estricto</strong>. En Spring Boot, el uso del contenedor de Inversión de Control (IoC) y las anotaciones automatizan la inyección de dependencias, obligando al desarrollador a ser disciplinado con la separación de responsabilidades.</p>
             
-            <h3>Lo más interesante: El poder del `@Transactional`</h3>
-            <p>El hallazgo más importante para garantizar la calidad del software fue entender el principio <strong>ACID</strong> en las bases de datos a través de la anotación <code>@Transactional</code>. Si en el servicio de Ventas el cliente compra 5 productos distintos, y el sistema falla por falta de stock al intentar procesar el quinto producto, Spring Boot hace un <i>rollback</i> automático e instantáneo (deshace todos los descuentos de stock previos y borra el rastro de la factura parcial), evitando completamente que la base de datos quede corrupta o inconsistente.</p>
+            <h3>¿Qué fue lo más interesante?</h3>
+            <p>El hallazgo más interesante fue descubrir cómo delegar la gestión del principio <strong>ACID</strong> a la base de datos a través de la anotación <code>@Transactional</code>. Si en el punto de venta el cliente compra múltiples productos y el sistema falla por falta de stock a la mitad del proceso, Spring Boot hace un <i>rollback</i> automático e instantáneo, protegiendo al sistema de sufrir corrupción de datos.</p>
             
-            <div class="img-placeholder" style="padding: 2rem;">
-                [AGREGAR AQUÍ: IMAGEN - Captura de código mostrando la anotación @Transactional en el VentaService]
-            </div>
-
-            <h3>El Misterio del Error 500: Qué NO sabía cómo funcionaba y ahora tengo bien claro</h3>
-            <p>A pesar de que mi código compilaba perfectamente, al realizar la prueba de listar los productos en Swagger, el sistema colapsó y devolvió un <strong>Error Interno del Servidor (500)</strong> originado por una <code>LazyInitializationException</code>.</p>
-            
-            <div class="img-placeholder" style="padding: 2rem;">
-                [AGREGAR AQUÍ: IMAGEN - Captura del error 500 arrojado por Swagger inicialmente]
-            </div>
-
-            <p><strong>El Descubrimiento:</strong> No sabía cómo Hibernate manejaba el rendimiento (<i>Lazy Loading</i> o Carga Perezosa). Para no saturar la memoria RAM, Java no extrae las relaciones (como la Categoría y el Proveedor de un Producto) de la base de datos hasta que uno las exige explícitamente. Cuando el framework intentó armar el archivo JSON para enviárselo al cliente, la sesión de la base de datos ya se había desconectado por protección.</p>
-            
-            <p><strong>La Solución:</strong> Comprendí el concepto y el ciclo de vida de la conexión a la base de datos. Fui al archivo <code>application.properties</code> y configuré <code>spring.jpa.open-in-view=true</code>. Esta configuración le ordenó a Spring Boot mantener viva la conexión SQL hasta que el archivo JSON terminara de empaquetarse por completo en el Controlador. Esto solucionó el error inmediatamente y la API respondió con código <strong>200 OK</strong>. Fue una lección invaluable sobre cómo la optimización de memoria de un lenguaje empresarial interactúa con la serialización web.</p>
-
-            <div class="img-placeholder" style="padding: 2rem;">
-                [AGREGAR AQUÍ: IMAGEN - Captura del Swagger mostrando el código 200 OK con la solución exitosa]
-            </div>
+            <h3>¿Qué NO sabía cómo funcionaba y ahora tengo bien claro?</h3>
+            <p>A pesar de que mi código compilaba, al realizar pruebas iniciales, el sistema colapsó y devolvió un <strong>Error Interno del Servidor (500)</strong> originado por una <code>LazyInitializationException</code>. <strong>No sabía cómo funcionaba el 'Lazy Loading' en ORMs de lenguajes empresariales.</strong> Descubrí que para ahorrar memoria, Java retrasa la extracción de llaves foráneas de la base de datos, y cuando intentaba armar el JSON en el controlador, la conexión SQL ya se había cerrado. Lo solucioné configurando <code>spring.jpa.open-in-view=true</code>, comprendiendo finalmente cómo interactúa el ciclo de vida de una conexión de base de datos con las respuestas HTTP.</p>
         </div>
 
     </div>

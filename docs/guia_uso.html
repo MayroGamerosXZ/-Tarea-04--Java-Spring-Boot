@@ -254,16 +254,21 @@
 
         <!-- SECCIÓN 5: INTERFAZ GRÁFICA FRONTEND -->
         <div class="card">
-            <h2>5. Interfaz Gráfica (Dashboard Web)</h2>
-            <p>El sistema cuenta con un <strong>Frontend Nativo</strong> implementado con HTML/CSS/JS utilizando el Sistema de Diseño <em>NovaSpark</em>.</p>
+            <h2>5. Interfaz Gráfica (ERP y Punto de Venta)</h2>
+            <p>El sistema cuenta con un <strong>Frontend Nativo Integrado</strong> para gestionar la ferretería de manera visual y sin recargar la página.</p>
             
-            <h3>Punto de Venta e Inventario</h3>
             <p>Abre tu navegador (Chrome o Edge) y entra a la ruta principal:</p>
             <pre><code>http://localhost:8080/</code></pre>
             <ol>
-                <li><strong>Inventario:</strong> Verás una tabla conectada en tiempo real a la API, mostrando el stock y precios de cada producto. Si el stock es bajo, verás una alerta crítica roja.</li>
-                <li><strong>Punto de Venta:</strong> Puedes registrar ventas visualmente. Selecciona un producto, pon la cantidad y haz clic en "Confirmar y Cobrar". El sistema hará el descuento automáticamente e impedirá la venta si no hay stock (usando <code>@Transactional</code> por detrás).</li>
+                <li><strong>Resumen (Inicio):</strong> Muestra 5 KPIs actualizados en tiempo real (Clientes, Productos, Bajo Stock, Unidades y Valor monetario).</li>
+                <li><strong>Clientes:</strong> Puedes registrar clientes nuevos (con su NIT, Teléfono, Email) y ver el directorio. Al crear uno, se sincronizará automáticamente para que puedas venderle.</li>
+                <li><strong>Productos:</strong> Puedes agregar productos nuevos al catálogo asignándoles Precio y un Proveedor. (Recuerda: El stock inicial será 0 por seguridad).</li>
+                <li><strong>Kárdex / Entradas:</strong> Aquí compras mercadería a los proveedores. Todo lo que sumes aquí subirá tu stock físico.</li>
+                <li><strong>Punto de Venta:</strong> Selecciona un Cliente de la lista desplegable, elige un producto y factura. Si la venta es exitosa, todo tu Dashboard (inicio) cambiará al instante.</li>
             </ol>
+            <div class="alert">
+                <strong>💡 Magia Frontend:</strong> La interfaz usa una función asíncrona. Cualquier cambio que hagas actualiza los números del Inicio al instante sin necesidad de darle F5.
+            </div>
         </div>
 
         <!-- SECCIÓN 6: SWAGGER Y POSTMAN -->
