@@ -328,8 +328,8 @@
                                 const tbCli = document.getElementById('tabla-clientes');
                 tbCli.innerHTML = '';
                 clientes.forEach(c => {
-                    let actions = <button class="btn btn-secondary" style="padding:4px 8px;" onclick="editarCliente( + c.id + )"><i data-lucide="edit"></i></button> ;
-                    actions += <button class="btn btn-secondary" style="padding:4px 8px; color:var(--spark-orange);" onclick="eliminarCliente( + c.id + )"><i data-lucide="trash-2"></i></button>;
+                    let actions = '<button class="btn btn-secondary" style="padding:4px 8px;" onclick="editarCliente(' + c.id + ')"><i data-lucide="edit"></i></button> ';
+                    actions += '<button class="btn btn-secondary" style="padding:4px 8px; color:var(--spark-orange);" onclick="eliminarCliente(' + c.id + ')"><i data-lucide="trash-2"></i></button>';
                     tbCli.innerHTML += '<tr><td>'+c.id+'</td><td><strong>'+c.nombre+'</strong></td><td>'+(c.nit || '-')+'</td><td>'+(c.telefono || '-')+'</td><td>'+(c.email || '-')+'</td><td>'+actions+'</td></tr>';
                 });
 
@@ -337,8 +337,8 @@
                 tbProd.innerHTML = '';
                 productos.forEach(p => {
                     const b = p.stockBajo ? '<span class="badge badge-danger">Crítico</span>' : '<span class="badge badge-success">Óptimo</span>';
-                    let actions = <button class="btn btn-secondary" style="padding:4px 8px;" onclick="editarProducto( + p.id + )"><i data-lucide="edit"></i></button> ;
-                    actions += <button class="btn btn-secondary" style="padding:4px 8px; color:var(--spark-orange);" onclick="eliminarProducto( + p.id + )"><i data-lucide="trash-2"></i></button>;
+                    let actions = '<button class="btn btn-secondary" style="padding:4px 8px;" onclick="editarProducto(' + p.id + ')"><i data-lucide="edit"></i></button> ';
+                    actions += '<button class="btn btn-secondary" style="padding:4px 8px; color:var(--spark-orange);" onclick="eliminarProducto(' + p.id + ')"><i data-lucide="trash-2"></i></button>';
                     tbProd.innerHTML += '<tr><td>'+p.codigo+'</td><td><strong>'+p.nombre+'</strong></td><td>Q'+p.precio.toFixed(2)+'</td><td>'+p.stock+'</td><td>'+b+'</td><td>'+actions+'</td></tr>';
                 });
 
@@ -517,6 +517,7 @@
     </script>
 </body>
 </html>
+
 
 
 
