@@ -74,3 +74,66 @@ graph TD
     style D fill:#DCFCE7,color:#111827,stroke:#34D399
     style E fill:#F3F4F6,color:#111827,stroke:#9CA3AF
 ```
+
+
+## 🗄️ Modelo Entidad-Relación (ERD)
+
+El siguiente diagrama muestra la estructura de la base de datos relacional (PostgreSQL) y cómo se conectan los módulos de inventario, ventas y clientes.
+
+```mermaid
+erDiagram
+    CATEGORIA ||--o{ PRODUCTO : "clasifica"
+    PROVEEDOR ||--o{ PRODUCTO : "suministra"
+    
+    CLIENTE ||--o{ VENTA : "realiza"
+    CLIENTE ||--o{ COTIZACION : "solicita"
+    
+    VENTA ||--|{ DETALLE_VENTA : "contiene"
+    PRODUCTO ||--o{ DETALLE_VENTA : "incluido_en"
+    
+    COTIZACION ||--|{ DETALLE_COTIZACION : "contiene"
+    PRODUCTO ||--o{ DETALLE_COTIZACION : "incluido_en"
+    
+    PRODUCTO ||--o{ MOVIMIENTO_KARDEX : "registra_historial"
+    PRODUCTO ||--o{ ENTRADA_INVENTARIO : "recibe"
+    PROVEEDOR ||--o{ ENTRADA_INVENTARIO : "factura"
+
+    PRODUCTO {
+        Long id PK
+        String codigo
+        String nombre
+        BigDecimal precio
+        Integer stock
+        Integer stock_minimo
+    }
+    CLIENTE {
+        Long id PK
+        String nombre
+        String nit
+        String telefono
+    }
+    VENTA {
+        Long id PK
+        DateTime fecha
+        BigDecimal total
+        String estado
+    }
+    DETALLE_VENTA {
+        Long id PK
+        Integer cantidad
+        BigDecimal precio_unitario
+        BigDecimal subtotal
+    }
+    MOVIMIENTO_KARDEX {
+        Long id PK
+        DateTime fecha
+        String tipo
+        Integer cantidad
+        Integer stock_nuevo
+    }
+    ENTRADA_INVENTARIO {
+        Long id PK
+        Integer cantidad
+        BigDecimal costo_total
+    }
+```
