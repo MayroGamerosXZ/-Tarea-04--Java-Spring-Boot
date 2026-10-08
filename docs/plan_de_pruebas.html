@@ -25,11 +25,36 @@
 <body>
     <div class="wrapper">
         <h1>✅ Matriz de Pruebas - ThunderMax API</h1>
-        <p style="text-align: center;">Usa esta hoja como "Checklist" para probar el sistema en Swagger UI (<code>http://localhost:8080/swagger-ui.html</code>).</p>
+        <p style="text-align: center;">Usa esta hoja como "Checklist" para probar el sistema.</p>
+
+        <!-- Nueva Sección Visual -->
+        <div class="module" style="border-color: #2563eb;">
+            <h2 class="module-header" style="background-color: #2563eb;">🌟 Opción 1: Interfaz Visual (Dashboard)</h2>
+            
+            <label class="test-case">
+                <input type="checkbox" class="checkbox">
+                <div class="test-info">
+                    <div class="test-title">Acceder al Sistema Web</div>
+                    <p><strong>Acción:</strong> Abre tu navegador y entra a <code>http://localhost:8080/</code> (sin /swagger-ui.html).</p>
+                    <p class="expected">Resultado esperado: Se abrirá la interfaz NovaSpark. Verás una barra lateral y un panel central.</p>
+                </div>
+            </label>
+
+            <label class="test-case">
+                <input type="checkbox" class="checkbox">
+                <div class="test-info">
+                    <div class="test-title">Probar Punto de Venta</div>
+                    <p><strong>Acción:</strong> Clic en "Punto de Venta" en el menú izquierdo. Selecciona un producto e intenta vender 2 unidades.</p>
+                    <p class="expected">Resultado esperado: El sistema mostrará una alerta verde con el Total facturado. Si pides más de lo que hay en inventario, mostrará una alerta roja validando el stock.</p>
+                </div>
+            </label>
+        </div>
+
+        <p style="text-align: center; margin-top: 30px; font-weight: bold; color: #4b5563;">O bien, realiza las pruebas de bajo nivel a través de Swagger:</p>
 
         <!-- Modulo 1: Catálogos -->
         <div class="module">
-            <h2 class="module-header">1. Módulo de Catálogos (Lectura)</h2>
+            <h2 class="module-header">1. Módulo de Catálogos (Swagger)</h2>
             
             <label class="test-case">
                 <input type="checkbox" class="checkbox">

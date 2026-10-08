@@ -137,17 +137,49 @@
             </div>
         </div>
 
-        <!-- ESCENA 2 -->
+        <!-- ESCENA 2: INTERFAZ GRÁFICA FRONTEND -->
         <div class="escena">
-            <h2>Escena 2: Pruebas en Swagger (Inventario y Kárdex)</h2>
+            <h2>Escena 2: Interfaz Web (Frontend)</h2>
             
             <div class="accion">
-                En Pantalla: Cambias la vista a Google Chrome, entrando a <code>http://localhost:8080/swagger-ui.html</code>
+                En Pantalla: Cambias la vista a Google Chrome, entrando a <code>http://localhost:8080/</code> (la ruta raíz).
             </div>
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Para probar la funcionalidad, utilicé Swagger, el cual auto-documenta mi código de Java. Vamos a hacer una prueba crítica: El manejo de inventario. En este sistema, el stock no se puede alterar a mano. Se hace a través del Kárdex."</span>
+                <span class="texto">"Aunque el objetivo principal era construir el Backend, decidí implementar también una interfaz gráfica completa para el usuario final. Está integrada dentro del mismo servidor de Spring Boot usando HTML, CSS y JavaScript nativo, y fue diseñada utilizando el Sistema de Diseño Corporativo 'NovaSpark'."</span>
+            </div>
+
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Desde este Dashboard web, podemos ver en tiempo real el catálogo de la ferretería que está jalando directamente de nuestra API."</span>
+            </div>
+
+            <div class="accion">
+                Acción: Haces clic en el menú "Punto de Venta" en la barra lateral izquierda.
+            </div>
+
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Si me voy al Punto de Venta, puedo realizar una transacción de forma visual. El JavaScript del navegador se comunicará por debajo con las rutas de mi backend para validar el stock, descontarlo y procesar la compra."</span>
+            </div>
+
+            <div class="accion">
+                Acción: Seleccionas un producto en el menú desplegable, pones cantidad 2, y le das clic a "Confirmar y Cobrar". Debe salir un mensaje verde de éxito.
+            </div>
+        </div>
+
+        <!-- ESCENA 3 -->
+        <div class="escena">
+            <h2>Escena 3: Pruebas a bajo nivel en Swagger (Inventario y Kárdex)</h2>
+            
+            <div class="accion">
+                En Pantalla: Cambias de pestaña en Chrome, entrando a <code>http://localhost:8080/swagger-ui.html</code>
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Ahora, para demostrar cómo funciona el motor por detrás, utilicé Swagger, el cual auto-documenta mi código de Java. Vamos a hacer una prueba a bajo nivel: El manejo de inventario. En este sistema, el stock no se puede alterar a mano. Se hace a través del Kárdex."</span>
             </div>
 
             <div class="dialogo">
