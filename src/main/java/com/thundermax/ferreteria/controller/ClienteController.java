@@ -50,4 +50,11 @@ public class ClienteController {
     public Cliente actualizar(@PathVariable Long id, @Valid @RequestBody ClienteRequest req) {
         return clienteService.actualizar(id, req);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @Operation(summary = "Elimina un cliente físicamente si no tiene ventas")
+    public void eliminar(@PathVariable Long id) {
+        clienteService.eliminar(id);
+    }
 }

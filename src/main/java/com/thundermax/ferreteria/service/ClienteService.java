@@ -59,4 +59,16 @@ public class ClienteService {
         c.setDireccion(req.direccion());
         return clienteRepository.save(c);
     }
+
+    public void eliminar(Long id) {
+        Cliente c = obtenerPorId(id);
+        if (c.getNit().equalsIgnoreCase("CF")) {
+            throw new ReglaNegocioException("No se puede eliminar el cliente de Consumidor Final.");
+        }
+        try {
+            clienteRepository.delete(c);
+        } catch(Exception e) {
+            throw new ReglaNegocioException("No se puede eliminar el cliente porque tiene ventas asociadas.");
+        }
+    }
 }

@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: e26451c2-77fc-4e1a-8017-76cd6b75913b
+
+localResources:
+  collections:
+    - ../docs/postman/ThunderMax.postman_collection.json

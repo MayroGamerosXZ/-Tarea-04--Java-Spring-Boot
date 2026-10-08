@@ -9,5 +9,6 @@ public enum TipoMovimiento {
     /** Salida por venta (resta stock). */
     SALIDA_VENTA,
     /** Devolución por anulación de venta (suma stock). */
-    DEVOLUCION_ANULACION
+    DEVOLUCION_ANULACION;
+    public static final TipoMovimiento SALIDA = SALIDA_VENTA;
 }
