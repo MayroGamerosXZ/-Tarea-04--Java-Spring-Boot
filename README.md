@@ -55,3 +55,22 @@ Sistema backend para la gestión integral de una ferretería guatemalteca, desar
 
 ## 📝 Autor
 * **Mayro Gameros**
+
+
+## 🏗️ Arquitectura del Sistema (N-Capas)
+
+El proyecto sigue una arquitectura estricta de N-Capas, garantizando el principio de responsabilidad única.
+
+```mermaid
+graph TD
+    A[💻 Cliente: Frontend Web / Postman] -->|Peticiones HTTP| B(🎛️ Controladores REST)
+    B -->|DTOs| C{⚙️ Servicios: Lógica y Transacciones}
+    C -->|Entidades| D(🗄️ Repositorios JPA)
+    D <-->|SQL| E[(🐘 PostgreSQL)]
+    
+    style A fill:#2563EB,color:#fff,stroke:#1D4ED8
+    style B fill:#DBEAFE,color:#111827,stroke:#60A5FA
+    style C fill:#FEF3C7,color:#111827,stroke:#F59E0B
+    style D fill:#DCFCE7,color:#111827,stroke:#34D399
+    style E fill:#F3F4F6,color:#111827,stroke:#9CA3AF
+```
