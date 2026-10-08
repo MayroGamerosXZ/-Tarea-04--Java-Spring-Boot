@@ -178,26 +178,31 @@
             </div>
         </div>
 
-                <!-- ESCENA 3 -->
+                        <!-- ESCENA 3 -->
         <div class="escena">
-            <h2>Escena 3: Pruebas a bajo nivel en Postman (Facturación)</h2>
+            <h2>Escena 3: Documentación y Diseño del API (Swagger)</h2>
             
             <div class="accion">
-                En Pantalla: Abres la aplicación de Postman. Asegúrate de tener la pestaña "Body" seleccionada arriba (para que se vea el JSON de entrada) y el área de Response visible abajo.
+                En Pantalla: Abres el navegador en <code>http://localhost:8080/swagger-ui.html</code> y haces scroll rápidamente por la lista de endpoints.
             </div>
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Ahora, para demostrar el motor del backend de forma independiente, utilizaremos Postman. Vamos a hacer una prueba a bajo nivel de nuestro módulo de facturación."</span>
+                <span class="texto">"Toda la arquitectura backend está auto-documentada usando OpenAPI y Swagger. Como pueden ver aquí, tenemos el diseño y catálogo de todos los endpoints disponibles (inventario, ventas, herramientas), listos para que cualquier sistema externo se integre fácilmente."</span>
             </div>
+        </div>
 
+        <!-- ESCENA 4 -->
+        <div class="escena">
+            <h2>Escena 4: Pruebas a bajo nivel en Postman (Facturación)</h2>
+            
             <div class="accion">
-                Acción: Seleccionas la petición "POST Realizar Venta". Muestras con el mouse el JSON que está en el área "Body" (donde le envías los IDs de los productos).
+                En Pantalla: Cambias a la aplicación de Postman. Seleccionas la petición "POST Realizar Venta". Muestras la pestaña "Body" con el JSON.
             </div>
-
+            
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Uno de los puntos clave del sistema es el uso de transacciones con la anotación de base de datos '@Transactional'. Si enviamos esta petición de venta..."</span>
+                <span class="texto">"Sin embargo, el punto principal para las pruebas a bajo nivel lo haremos en Postman. Si enviamos esta petición de venta mediante JSON, probamos directamente nuestra lógica de base de datos."</span>
             </div>
 
             <div class="accion">
@@ -206,65 +211,59 @@
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"...el sistema descuenta el stock, calcula el IVA del 12% y nos devuelve la factura. Si intentara vender más de lo que hay en stock, la anotación transaccional abortaría toda la operación para no corromper la base de datos."</span>
-            </div>
-        </div>
-
-        <!-- ESCENA 4 -->
-        <div class="escena">
-            <h2>Escena 4: Calculadora y Valor Agregado en Postman</h2>
-            
-            <div class="accion">
-                En Pantalla: Sigues en Postman, pero ahora seleccionas la petición "POST Calculadora de Pintura".
-            </div>
-            
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"Como valor agregado, implementé a la ferretería una calculadora inteligente a nivel de API. Le mandamos en el Request el largo y ancho de una pared en metros..."</span>
-            </div>
-
-            <div class="accion">
-                Acción: Muestras el panel superior "Body" (ej. largo 10, ancho 5) y le das clic a "Send".
-            </div>
-
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"...y como vemos en la Respuesta (Status 200 OK), el servidor calcula el área de 50 metros cuadrados, nos indica que necesitamos 2 galones, y hace una búsqueda automática para sugerirnos las pinturas que actualmente tenemos en stock."</span>
+                <span class="texto">"Aquí vemos que el servidor responde correctamente. Destaca el uso de la anotación '@Transactional': si intentara vender más de lo que hay en stock, el servidor abortaría toda la transacción para no corromper la base de datos."</span>
             </div>
         </div>
 
         <!-- ESCENA 5 -->
         <div class="escena">
-            <h2>Escena 5: Reflexión Final y Errores Solucionados</h2>
+            <h2>Escena 5: Calculadora y Valor Agregado en Postman</h2>
             
             <div class="accion">
-                En Pantalla: Vuelves a la cámara o muestras la estructura de tu código en IntelliJ.
+                En Pantalla: Sigues en Postman, seleccionas la petición "POST Calculadora de Pintura". Muestras el panel "Body" con las medidas.
             </div>
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Para finalizar, quiero responder a lo solicitado en el informe. Lo que más reforcé fue la Arquitectura de Capas. Al venir de Node.js, donde los controladores y rutas se mezclan, aprender a usar Spring Boot me obligó a separar el enrutamiento web de la lógica de negocio."</span>
+                <span class="texto">"Como valor agregado, diseñé una calculadora inteligente. Le mandamos en este Request el largo y ancho de una pared en metros..."</span>
+            </div>
+
+            <div class="accion">
+                Acción: Le das clic a "Send" y muestras la Respuesta JSON (código 200).
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Lo que NO sabía cómo funcionaba, fue algo muy curioso. Al probar la API por primera vez, el sistema me arrojó un Error Interno 500 originado por un fallo llamado 'Carga Perezosa' o Lazy Loading. En Java, para ahorrar memoria RAM, las relaciones entre tablas no se cargan automáticamente."</span>
-            </div>
-
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"Para solucionarlo, descubrí y configuré el concepto de 'open-in-view' en las propiedades de la aplicación, lo cual le ordenó a mi sistema mantener viva la conexión a la base de datos hasta terminar de renderizar la información. Es un nivel de control de optimización que en JavaScript rara vez notamos."</span>
-            </div>
-
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"Este ha sido mi proyecto ThunderMax, muchas gracias por su atención."</span>
+                <span class="texto">"...y el servidor procesa el área, nos indica cuántos galones necesitamos, y hace una búsqueda automática sugiriendo pinturas reales que están actualmente en nuestro inventario."</span>
             </div>
         </div>
 
-    </div>
+        <!-- ESCENA 6 -->
+        <div class="escena">
+            <h2>Escena 6: Reflexión Final y Errores Solucionados</h2>
+            
+            <div class="accion">
+                En Pantalla: Vuelves a la cámara o muestras la estructura de tu código en IntelliJ (específicamente la clase DetalleVenta.java).
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Para finalizar, la transición de Node.js a Spring Boot reforzó fuertemente mis bases de Arquitectura N-Capas. Aunque me topé con retos críticos."</span>
+            </div>
 
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"El más grave fue un Colapso por Recursión Infinita (Stack Overflow). Al hacer una venta, el objeto Venta llamaba a Detalles, y Detalles llamaba a Venta infinitamente al convertir a JSON. Lo solucioné magistralmente descubriendo e implementando la anotación @JsonIgnore."</span>
+            </div>
+
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"También dominé la Carga Perezosa (Lazy Loading) configurando 'open-in-view'. Este nivel de optimización y tipado estricto es lo que hace a Java tan robusto. Este ha sido el proyecto ThunderMax, muchas gracias."</span>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
 
 
