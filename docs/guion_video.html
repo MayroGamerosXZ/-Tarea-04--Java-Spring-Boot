@@ -137,7 +137,26 @@
             </div>
         </div>
 
-                <!-- ESCENA 2: INTERFAZ GRÁFICA FRONTEND (NUEVO) -->
+                        <!-- ESCENA 1.5: ESTRUCTURA DE ARCHIVOS (NUEVO) -->
+        <div class="escena">
+            <h2>Escena 1.5: Arquitectura del Proyecto (IntelliJ IDEA)</h2>
+            
+            <div class="accion">
+                En Pantalla: Muestras la vista de carpetas a la izquierda en IntelliJ IDEA (donde se ven los paquetes model, repository, service, controller).
+            </div>
+            
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"Antes de ver el sistema en acción, quiero explicar brevemente la organización del código. Al utilizar una Arquitectura N-Capas, separé las responsabilidades en diferentes grupos de archivos o paquetes:"</span>
+            </div>
+
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"La carpeta <strong>'model'</strong> contiene las entidades que se mapean a las tablas de la base de datos. La carpeta <strong>'repository'</strong> maneja las consultas SQL. La carpeta <strong>'service'</strong> es el cerebro, donde escribí todas las reglas de negocio; y finalmente <strong>'controller'</strong> expone las rutas web de la API. Todo se comunica usando la carpeta <strong>'dto'</strong> para transferencia de datos."</span>
+            </div>
+        </div>
+
+        <!-- ESCENA 2: INTERFAZ GRÁFICA FRONTEND (NUEVO) -->
         <div class="escena">
             <h2>Escena 2: Interfaz Web Integrada y Kárdex (ERP)</h2>
             
@@ -192,7 +211,7 @@
             </div>
         </div>
 
-        <!-- ESCENA 4 -->
+                <!-- ESCENA 4 -->
         <div class="escena">
             <h2>Escena 4: Pruebas a bajo nivel en Postman (Facturación)</h2>
             
@@ -202,7 +221,7 @@
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Sin embargo, el punto principal para las pruebas a bajo nivel lo haremos en Postman. Si enviamos esta petición de venta mediante JSON, probamos directamente nuestra lógica de base de datos."</span>
+                <span class="texto">"Sin embargo, el punto principal para las pruebas a bajo nivel lo haremos en Postman. Postman es un entorno o cliente HTTP profesional que nos permite simular peticiones directas a nuestra API, armar los datos en formato JSON, y visualizar la respuesta pura del servidor sin distracciones visuales."</span>
             </div>
 
             <div class="accion">
@@ -211,7 +230,7 @@
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Aquí vemos que el servidor responde correctamente. Destaca el uso de la anotación '@Transactional': si intentara vender más de lo que hay en stock, el servidor abortaría toda la transacción para no corromper la base de datos."</span>
+                <span class="texto">"Si enviamos esta petición de venta mediante JSON, probamos directamente nuestra lógica de base de datos. Aquí vemos que el servidor responde correctamente. Destaca el uso de la anotación '@Transactional': si intentara vender más de lo que hay en stock, el servidor abortaría toda la transacción para no corromper la base de datos."</span>
             </div>
         </div>
 
@@ -264,6 +283,7 @@
     </div>
 </body>
 </html>
+
 
 
 
