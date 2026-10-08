@@ -137,9 +137,9 @@
             </div>
         </div>
 
-        <!-- ESCENA 2: INTERFAZ GRÁFICA FRONTEND (NUEVO) -->
+                <!-- ESCENA 2: INTERFAZ GRÁFICA FRONTEND (NUEVO) -->
         <div class="escena">
-            <h2>Escena 2: Interfaz Web Integrada (ERP)</h2>
+            <h2>Escena 2: Interfaz Web Integrada y Kárdex (ERP)</h2>
             
             <div class="accion">
                 En Pantalla: Cambias la vista a Google Chrome, entrando a <code>http://localhost:8080/</code> (la ruta raíz).
@@ -147,34 +147,34 @@
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Aunque el objetivo principal era construir el Backend, decidí desarrollar un módulo de Interfaz Gráfica para tener un ERP completo. Aquí vemos el Panel Principal que me muestra el número de clientes, unidades, y valor monetario del inventario."</span>
+                <span class="texto">"Aunque el objetivo principal era construir el Backend, desarrollé un módulo de Interfaz Gráfica para tener un ERP funcional. Aquí vemos el Panel Principal que muestra el inventario valorizado."</span>
             </div>
 
             <div class="accion">
-                Acción: Haces clic en el menú "Clientes" y llenas el formulario rápidamente (pon cualquier nombre y NIT). Le das "Guardar".
+                Acción: Haces clic en el menú "Kárdex / Entradas". Seleccionas un producto en la tabla inferior de "Consultar Bitácora".
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Si registro un nuevo cliente, se guarda en PostgreSQL mediante mi API. Lo mismo sucede si creo un nuevo producto para la ferretería."</span>
+                <span class="texto">"Implementé un sistema de auditoría estricto. En este Kárdex puedo realizar ingresos de compra, registrar salidas manuales por merma, y consultar el historial absoluto de cada producto, con su costo unitario y precio de venta."</span>
             </div>
 
             <div class="accion">
-                Acción: Haces clic en "Punto de Venta". Muestras cómo el cliente que acabas de crear ya aparece en la lista desplegable. Llenas una venta y le das "Confirmar".
+                Acción: Haces clic en "Punto de Venta". Muestras cómo funciona la lista desplegable. Llenas una venta y le das "Confirmar". (Saltará la alerta nativa "Venta completada").
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Ahora, en el Punto de Venta, selecciono mi nuevo cliente y registro la compra. Lo impresionante de este frontend es la sincronización en tiempo real. Si regreso a la pestaña de Inicio..."</span>
+                <span class="texto">"En el Punto de Venta tuvimos un reto de Recursión Infinita con Java y JSON, que logré resolver bloqueando la recursión cíclica con anotaciones. Ahora, al realizar una venta..."</span>
             </div>
 
             <div class="accion">
-                Acción: Haces clic en "Resumen (Inicio)" para mostrar cómo los números cambiaron.
+                Acción: Clic en Aceptar en la alerta. Luego clic rápido en "Resumen (Inicio)" para mostrar cómo los números cambiaron.
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"...podemos observar que las unidades en inventario bajaron y el valor en Quetzales se actualizó instantáneamente sin tener que darle a F5 ni recargar la página, logrando una experiencia de usuario fluida."</span>
+                <span class="texto">"...el sistema confirma la transacción y, de manera asíncrona, actualiza al instante nuestras unidades y valor en Quetzales sin necesidad de recargar la página."</span>
             </div>
         </div>
 
@@ -294,3 +294,4 @@
 
 </body>
 </html>
+

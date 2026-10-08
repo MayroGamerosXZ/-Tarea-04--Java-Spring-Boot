@@ -252,7 +252,7 @@
             </div>
         </div>
 
-        <!-- SECCIÓN 5: INTERFAZ GRÁFICA FRONTEND -->
+                <!-- SECCIÓN 5: INTERFAZ GRÁFICA FRONTEND -->
         <div class="card">
             <h2>5. Interfaz Gráfica (ERP y Punto de Venta)</h2>
             <p>El sistema cuenta con un <strong>Frontend Nativo Integrado</strong> para gestionar la ferretería de manera visual y sin recargar la página.</p>
@@ -261,15 +261,21 @@
             <pre><code>http://localhost:8080/</code></pre>
             <ol>
                 <li><strong>Resumen (Inicio):</strong> Muestra 5 KPIs actualizados en tiempo real (Clientes, Productos, Bajo Stock, Unidades y Valor monetario).</li>
-                <li><strong>Clientes:</strong> Puedes registrar clientes nuevos (con su NIT, Teléfono, Email) y ver el directorio. Al crear uno, se sincronizará automáticamente para que puedas venderle.</li>
-                <li><strong>Productos:</strong> Puedes agregar productos nuevos al catálogo asignándoles Precio y un Proveedor. (Recuerda: El stock inicial será 0 por seguridad).</li>
-                <li><strong>Kárdex / Entradas:</strong> Aquí compras mercadería a los proveedores. Todo lo que sumes aquí subirá tu stock físico.</li>
-                <li><strong>Punto de Venta:</strong> Selecciona un Cliente de la lista desplegable, elige un producto y factura. Si la venta es exitosa, todo tu Dashboard (inicio) cambiará al instante.</li>
+                <li><strong>Clientes y Productos:</strong> Formularios integrados para nutrir tu base de datos de manera visual.</li>
+                <li><strong>Auditoría y Kárdex:</strong> 
+                    <ul>
+                        <li><strong>Entradas:</strong> Ingresa nueva mercadería registrando su costo de compra.</li>
+                        <li><strong>Salidas Manuales:</strong> Reduce stock por mermas o ajustes (con motivo justificado).</li>
+                        <li><strong>Bitácora:</strong> Selecciona un producto para ver la tabla histórica completa. Muestra Entradas/Salidas, stock resultante, costo unitario y a qué precio se vendió.</li>
+                    </ul>
+                </li>
+                <li><strong>Punto de Venta:</strong> Selecciona un Cliente de la lista, elige el producto y factura. Si la venta es exitosa, verás una notificación emergente ("Venta completada exitosamente") y el Dashboard cambiará al instante.</li>
             </ol>
             <div class="alert">
-                <strong>💡 Magia Frontend:</strong> La interfaz usa una función asíncrona. Cualquier cambio que hagas actualiza los números del Inicio al instante sin necesidad de darle F5.
+                <strong>💡 Magia Frontend:</strong> La interfaz usa una función asíncrona. Cualquier cambio que hagas en Mermas, Kárdex o Ventas actualiza los números del Inicio al instante sin darle a F5.
             </div>
         </div>
+
 
         <!-- SECCIÓN 6: SWAGGER Y POSTMAN -->
         <div class="card">
@@ -297,3 +303,4 @@
 
 </body>
 </html>
+
