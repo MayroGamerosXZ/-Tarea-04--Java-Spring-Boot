@@ -178,86 +178,58 @@
             </div>
         </div>
 
-        <!-- ESCENA 3 -->
+                <!-- ESCENA 3 -->
         <div class="escena">
-            <h2>Escena 3: Pruebas a bajo nivel en Swagger (Kárdex y Transacciones)</h2>
+            <h2>Escena 3: Pruebas a bajo nivel en Postman (Facturación)</h2>
             
             <div class="accion">
-                En Pantalla: Cambias de pestaña en Chrome, entrando a <code>http://localhost:8080/swagger-ui.html</code>
-            </div>
-            
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"Ahora, para demostrar cómo funciona el motor por detrás, utilicé Swagger, el cual auto-documenta mi código de Java. Vamos a hacer una prueba a bajo nivel: El manejo de inventario. En este sistema, el stock no se puede alterar a mano. Se hace a través del Kárdex."</span>
-            </div>
-
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"Voy al endpoint de 'Entradas', y haré una petición para comprar 50 unidades del producto 1, que es un martillo."</span>
-            </div>
-
-            <div class="accion">
-                Acción: Abres POST /api/entradas. Presionas 'Try it out'. Pones el JSON con 50 de cantidad y le das a 'Execute'.
-            </div>
-
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"El sistema me devuelve un código 201 Created. Ahora, si voy a revisar el Kárdex de ese producto específico..."</span>
-            </div>
-
-            <div class="accion">
-                Acción: Vas a GET /api/productos/1/kardex y le das a Execute.
-            </div>
-
-            <div class="dialogo">
-                <span class="personaje">Tú:</span>
-                <span class="texto">"...podemos ver que la bitácora registró perfectamente que el stock anterior era 0, y el nuevo stock es 50, auditando la compra."</span>
-            </div>
-        </div>
-
-        <!-- ESCENA 3 -->
-        <div class="escena">
-            <h2>Escena 3: Pruebas de Facturación y Transacciones</h2>
-            
-            <div class="accion">
-                En Pantalla: Sigues en Swagger, pero ahora bajas a la sección de Ventas.
+                En Pantalla: Abres la aplicación de Postman. Asegúrate de tener la pestaña "Body" seleccionada arriba (para que se vea el JSON de entrada) y el área de Response visible abajo.
             </div>
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Ahora hagamos una venta. Uno de los puntos clave del sistema es el uso de transacciones con la anotación de base de datos '@Transactional'. Si intento vender, el sistema descuenta el stock y calcula el IVA del 12%."</span>
+                <span class="texto">"Ahora, para demostrar el motor del backend de forma independiente, utilizaremos Postman. Vamos a hacer una prueba a bajo nivel de nuestro módulo de facturación."</span>
             </div>
 
             <div class="accion">
-                Acción: Abres POST /api/ventas. Presionas 'Try it out' y envías una venta de 5 unidades.
+                Acción: Seleccionas la petición "POST Realizar Venta". Muestras con el mouse el JSON que está en el área "Body" (donde le envías los IDs de los productos).
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Aquí vemos la factura generada exitosamente. Sin embargo, si yo intentara vender 9,000 unidades de un producto, la anotación transaccional aborta la operación completa para no corromper la base de datos, lanzando un error de que el stock es insuficiente."</span>
+                <span class="texto">"Uno de los puntos clave del sistema es el uso de transacciones con la anotación de base de datos '@Transactional'. Si enviamos esta petición de venta..."</span>
+            </div>
+
+            <div class="accion">
+                Acción: Haces clic en el botón azul "Send". Muestras cómo abajo aparece el 201 Created y el total calculado.
+            </div>
+
+            <div class="dialogo">
+                <span class="personaje">Tú:</span>
+                <span class="texto">"...el sistema descuenta el stock, calcula el IVA del 12% y nos devuelve la factura. Si intentara vender más de lo que hay en stock, la anotación transaccional abortaría toda la operación para no corromper la base de datos."</span>
             </div>
         </div>
 
         <!-- ESCENA 4 -->
         <div class="escena">
-            <h2>Escena 4: Calculadora y Valor Agregado</h2>
+            <h2>Escena 4: Calculadora y Valor Agregado en Postman</h2>
             
             <div class="accion">
-                En Pantalla: Vas a la sección de Calculadora y Reportes en Swagger.
+                En Pantalla: Sigues en Postman, pero ahora seleccionas la petición "POST Calculadora de Pintura".
             </div>
             
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"Como valor agregado, le implementé a la ferretería una calculadora. Le mando el largo y ancho de una pared en metros..."</span>
+                <span class="texto">"Como valor agregado, implementé a la ferretería una calculadora inteligente a nivel de API. Le mandamos en el Request el largo y ancho de una pared en metros..."</span>
             </div>
 
             <div class="accion">
-                Acción: Ejecutas POST /api/calculadora/pintura mandando 10 de largo y 5 de ancho.
+                Acción: Muestras el panel superior "Body" (ej. largo 10, ancho 5) y le das clic a "Send".
             </div>
 
             <div class="dialogo">
                 <span class="personaje">Tú:</span>
-                <span class="texto">"...y el sistema me responde en JSON que necesito comprar 2 galones de pintura, y me sugiere automáticamente las pinturas que hay actualmente en bodega."</span>
+                <span class="texto">"...y como vemos en la Respuesta (Status 200 OK), el servidor calcula el área de 50 metros cuadrados, nos indica que necesitamos 2 galones, y hace una búsqueda automática para sugerirnos las pinturas que actualmente tenemos en stock."</span>
             </div>
         </div>
 
@@ -294,4 +266,5 @@
 
 </body>
 </html>
+
 
