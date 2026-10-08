@@ -39,4 +39,11 @@ public class InventarioController {
     public List<MovimientoKardex> obtenerKardex(@PathVariable Long productoId) {
         return inventarioService.obtenerKardexProducto(productoId);
     }
+
+    @PostMapping("/salidas")
+    @ResponseStatus(HttpStatus.CREATED)
+    @Operation(summary = "Registra una salida manual (merma, ajuste) reduciendo el stock")
+    public void registrarSalidaManual(@Valid @RequestBody com.thundermax.ferreteria.dto.SalidaManualRequest req) {
+        inventarioService.registrarSalidaManual(req);
+    }
 }

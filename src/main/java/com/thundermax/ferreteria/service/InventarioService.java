@@ -74,6 +74,8 @@ public class InventarioService {
                 .stockAnterior(stockAnterior)
                 .stockNuevo(stockNuevo)
                 .referencia(ref)
+                .costoUnitario(req.costoUnitario())
+                .precioVenta(producto.getPrecio())
                 .build();
         kardexRepository.save(mov);
 
@@ -82,5 +84,31 @@ public class InventarioService {
         productoRepository.save(producto);
 
         return entrada;
+    }
+
+    @Transactional
+    public void registrarSalidaManual(com.thundermax.ferreteria.dto.SalidaManualRequest req) {
+        Producto producto = productoService.obtenerEntidad(req.productoId());
+        if (producto.getStock() < req.cantidad()) {
+            throw new com.thundermax.ferreteria.exception.ReglaNegocioException("Stock insuficiente para realizar esta salida manual.");
+        }
+        int stockAnterior = producto.getStock();
+        int stockNuevo = stockAnterior - req.cantidad();
+
+        MovimientoKardex mov = MovimientoKardex.builder()
+                .fecha(LocalDateTime.now())
+                .producto(producto)
+                .tipo(TipoMovimiento.SALIDA)
+                .cantidad(req.cantidad())
+                .stockAnterior(stockAnterior)
+                .stockNuevo(stockNuevo)
+                .referencia("Ajuste Manual: " + (req.motivo() != null ? req.motivo() : "Sin motivo"))
+                .costoUnitario(BigDecimal.ZERO)
+                .precioVenta(producto.getPrecio())
+                .build();
+        kardexRepository.save(mov);
+
+        producto.setStock(stockNuevo);
+        productoRepository.save(producto);
     }
 }

@@ -95,6 +95,7 @@ public class VentaService {
             MovimientoKardex mov = MovimientoKardex.builder()
                     .fecha(ahora).producto(p).tipo(TipoMovimiento.SALIDA_VENTA)
                     .cantidad(-det.cantidad()).stockAnterior(stockAnterior).stockNuevo(stockNuevo)
+                    .precioVenta(p.getPrecio())
                     .build();
             kardexRepository.save(mov);
         }
@@ -143,7 +144,7 @@ public class VentaService {
             MovimientoKardex mov = MovimientoKardex.builder()
                     .fecha(ahora).producto(p).tipo(TipoMovimiento.DEVOLUCION_ANULACION)
                     .cantidad(d.getCantidad()).stockAnterior(stockAnterior).stockNuevo(stockNuevo)
-                    .referencia("Anulación Venta #" + venta.getId())
+                    .referencia("Anulacion Venta #" + venta.getId()).precioVenta(p.getPrecio())
                     .build();
             kardexRepository.save(mov);
         }

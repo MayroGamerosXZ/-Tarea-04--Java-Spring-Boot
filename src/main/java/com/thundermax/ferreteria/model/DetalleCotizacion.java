@@ -19,6 +19,7 @@ public class DetalleCotizacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @com.fasterxml.jackson.annotation.JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "cotizacion_id")
     private Cotizacion cotizacion;

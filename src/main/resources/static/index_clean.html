@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ThunderMax - ERP & POS</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --sidebar-bg: #1e2124; --sidebar-hover: #2d333b; --brand-accent: #f59e0b;
+            --bg-light: #f3f4f6; --text-dark: #111827; --text-gray: #4b5563;
+            --white: #ffffff; --radius: 8px; --shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+        body { display: flex; height: 100vh; background-color: var(--bg-light); color: var(--text-dark); overflow: hidden; }
+
+        /* SIDEBAR */
+        .sidebar { width: 260px; background-color: var(--sidebar-bg); color: var(--white); display: flex; flex-direction: column; padding: 20px 15px; }
+        .brand { font-size: 20px; font-weight: 700; display: flex; align-items: center; gap: 10px; margin-bottom: 30px; padding: 0 10px; }
+        .brand .accent { color: var(--brand-accent); }
+        .nav-item { padding: 12px 15px; margin-bottom: 8px; border-radius: var(--radius); cursor: pointer; display: flex; align-items: center; gap: 12px; color: #adbac7; font-weight: 500; transition: 0.2s; }
+        .nav-item:hover { background-color: var(--sidebar-hover); color: var(--white); }
+        .nav-item.active { background-color: var(--brand-accent); color: #111827; font-weight: 600; }
+
+        /* MAIN CONTENT */
+        .main-content { flex: 1; padding: 40px; overflow-y: auto; }
+        h1 { font-size: 28px; margin-bottom: 5px; }
+        .subtitle { color: var(--text-gray); margin-bottom: 30px; font-size: 15px; }
+
+        /* KPIs */
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .kpi-card { background: var(--white); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 10px; }
+        .kpi-icon { width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; }
+        .kpi-title { font-size: 14px; color: var(--text-gray); font-weight: 500; }
+        .kpi-value { font-size: 32px; font-weight: 700; color: #111827; }
+
+        .card { background: var(--white); border-radius: var(--radius); padding: 25px; box-shadow: var(--shadow); margin-bottom: 25px; }
+        .card h3 { margin-bottom: 15px; border-bottom: 1px solid #e5e7eb; padding-bottom: 10px;}
+
+        /* FORMS & TABLES */
+        .grid-form { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 5px; }
+        input, select { width: 100%; padding: 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; }
+        input:focus, select:focus { outline: none; border-color: var(--brand-accent); box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.2); }
+        
+        .btn { padding: 10px 15px; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #111827; }
+        .btn-primary { background-color: var(--brand-accent); }
+        .btn-dark { background-color: #1f2937; color: white; }
+
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th { text-align: left; padding: 12px; background-color: #f9fafb; border-bottom: 2px solid #e5e7eb; color: #4b5563; font-size: 13px; }
+        td { padding: 12px; border-bottom: 1px solid #e5e7eb; font-size: 14px; }
+        
+        .badge { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .badge-green { background: #dcfce7; color: #166534; }
+        .badge-red { background: #fee2e2; color: #991b1b; }
+        
+        .hidden { display: none; }
+        .alert { padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500; display: none; position: sticky; top: 0; z-index: 100;}
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="brand">
+            <i data-lucide="hammer"></i>
+            <div>Ferretería<br><span class="accent">ThunderMax</span></div>
+        </div>
+        <div class="nav-item active" onclick="cambiarVista('inicio', this)"><i data-lucide="layout-dashboard"></i> Resumen (Inicio)</div>
+        <div class="nav-item" onclick="cambiarVista('clientes', this)"><i data-lucide="users"></i> Clientes</div>
+        <div class="nav-item" onclick="cambiarVista('productos', this)"><i data-lucide="package"></i> Productos</div>
+        <div class="nav-item" onclick="cambiarVista('inventario', this)"><i data-lucide="clipboard-list"></i> Kárdex / Entradas</div>
+        <div class="nav-item" onclick="cambiarVista('ventas', this)"><i data-lucide="shopping-cart"></i> Punto de Venta</div>
+    </div>
+
+    <div class="main-content">
+        <div id="alerta-global" class="alert"></div>
+
+        <!-- VISTA: INICIO -->
+        <div id="vista-inicio" class="vista">
+            <h1>Panel Principal</h1>
+            <p class="subtitle">Monitoreo en tiempo real del sistema.</p>
+
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #e0e7ff; color: #4f46e5;"><i data-lucide="users"></i></div>
+                    <div class="kpi-title">Clientes registrados</div>
+                    <div class="kpi-value" id="kpi-cli">0</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #fef3c7; color: #d97706;"><i data-lucide="package"></i></div>
+                    <div class="kpi-title">Productos en catálogo</div>
+                    <div class="kpi-value" id="kpi-prod">0</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #fee2e2; color: #dc2626;"><i data-lucide="alert-triangle"></i></div>
+                    <div class="kpi-title">Bajo stock crítico</div>
+                    <div class="kpi-value" id="kpi-bajo">0</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #dcfce7; color: #16a34a;"><i data-lucide="layers"></i></div>
+                    <div class="kpi-title">Unidades Físicas totales</div>
+                    <div class="kpi-value" id="kpi-uni">0</div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon" style="background: #f3e8ff; color: #9333ea;"><i data-lucide="dollar-sign"></i></div>
+                    <div class="kpi-title">Valor del Inventario</div>
+                    <div class="kpi-value" id="kpi-valor">Q0.00</div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Estado de Sincronización Automática</h3>
+                <p>✅ Conectado al Backend Spring Boot. Las operaciones de Clientes, Productos y Ventas actualizan estos indicadores instantáneamente.</p>
+            </div>
+        </div>
+
+        <!-- VISTA: CLIENTES -->
+        <div id="vista-clientes" class="vista hidden">
+            <h1>Gestión de Clientes</h1>
+            <div class="card">
+                <h3>Registrar Nuevo Cliente</h3>
+                <form onsubmit="crearCliente(event)">
+                    <div class="grid-form">
+                        <div class="form-group"><label>Nombre Completo</label><input type="text" id="cli-nombre" required></div>
+                        <div class="form-group"><label>NIT</label><input type="text" id="cli-nit" required></div>
+                        <div class="form-group"><label>Teléfono</label><input type="text" id="cli-tel"></div>
+                        <div class="form-group"><label>Email</label><input type="email" id="cli-email"></div>
+                        <div class="form-group" style="grid-column: span 2;"><label>Dirección</label><input type="text" id="cli-dir"></div>
+                    </div>
+                    <button type="submit" class="btn btn-dark"><i data-lucide="user-plus"></i> Guardar Cliente</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Directorio de Clientes</h3>
+                <table>
+                    <thead><tr><th>ID</th><th>Nombre</th><th>NIT</th><th>Teléfono</th><th>Email</th></tr></thead>
+                    <tbody id="tabla-clientes"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- VISTA: PRODUCTOS -->
+        <div id="vista-productos" class="vista hidden">
+            <h1>Catálogo de Productos</h1>
+            <div class="card">
+                <h3>Registrar Nuevo Producto al Catálogo</h3>
+                <form onsubmit="crearProducto(event)">
+                    <div class="grid-form">
+                        <div class="form-group"><label>Código</label><input type="text" id="prod-codigo" required></div>
+                        <div class="form-group"><label>Nombre</label><input type="text" id="prod-nombre" required></div>
+                        <div class="form-group"><label>Precio de Venta (Q)</label><input type="number" step="0.01" id="prod-precio" required></div>
+                        <div class="form-group"><label>Stock Mínimo (Alerta)</label><input type="number" id="prod-minimo" value="5" required></div>
+                        <div class="form-group"><label>Categoría</label><select id="prod-cat" required></select></div>
+                        <div class="form-group"><label>Proveedor</label><select id="prod-prov" required></select></div>
+                    </div>
+                    <p style="font-size: 13px; color: var(--text-gray); margin-bottom: 15px;">Nota: El stock físico inicia en 0. Use "Entradas de Inventario" para aumentarlo.</p>
+                    <button type="submit" class="btn btn-dark"><i data-lucide="package-plus"></i> Guardar Producto</button>
+                </form>
+            </div>
+            <div class="card">
+                <h3>Artículos en Base de Datos</h3>
+                <table>
+                    <thead><tr><th>Cód</th><th>Nombre</th><th>Precio</th><th>Stock</th><th>Estado</th></tr></thead>
+                    <tbody id="tabla-productos"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- VISTA: INVENTARIO -->
+        <div id="vista-inventario" class="vista hidden">
+            <h1>Auditoría y Kárdex</h1>

@@ -48,4 +48,10 @@ public class MovimientoKardex {
     /** Ej.: "Venta #12", "Entrada #3 - Factura A-555". */
     @Column(length = 120)
     private String referencia;
+
+    @Column(name = "costo_unitario", precision = 12, scale = 2)
+    private java.math.BigDecimal costoUnitario;
+
+    @Column(name = "precio_venta", precision = 12, scale = 2)
+    private java.math.BigDecimal precioVenta;
 }
